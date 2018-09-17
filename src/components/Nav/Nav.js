@@ -40,6 +40,11 @@ const Nav = () => (
             Campsite Review Details
           </Link>
         </li>
+        <li>
+          <Link to="/add-review">
+            Add Campsite Review
+          </Link>
+        </li>
       </ul>
     </div>
   </div>

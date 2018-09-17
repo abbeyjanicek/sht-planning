@@ -16,6 +16,7 @@ import AddHikePage from './components/AddHikePage/AddHikePage.js'
 import AddCampsitePage from './components/AddCampsitePage/AddCampsitePage.js'
 import CampsiteMainPage from './components/CampsiteMainPage/CampsiteMainPage.js'
 import CampsiteDetailsPage from './components/CampsiteDetailsPage/CampsiteDetailsPage.js'
+import AddReviewPage from './components/AddReviewPage/AddReviewPage.js'
 
 import './styles/main.css';
 
@@ -60,6 +61,10 @@ const App = () => (
         <Route
           path="/campsite-details"
           component={CampsiteDetailsPage}
+        />
+        <Route
+          path="/add-review"
+          component={AddReviewPage}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
