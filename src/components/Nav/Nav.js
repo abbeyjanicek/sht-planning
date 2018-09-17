@@ -15,6 +15,11 @@ const Nav = () => (
             Hike History
           </Link>
         </li>
+        <li>
+          <Link to="/map">
+            Progress Map
+          </Link>
+        </li>
       </ul>
     </div>
   </div>

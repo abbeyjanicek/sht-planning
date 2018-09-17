@@ -11,6 +11,7 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import HikeHistoryPage from './components/HikeHistory/HikeHistory';
+import ProgressMapPage from './components/ProgressMapPage/ProgressMapPage.js'
 
 import './styles/main.css';
 
@@ -35,6 +36,10 @@ const App = () => (
         <Route
           path="/history"
           component={HikeHistoryPage}
+        />
+        <Route
+          path="/map"
+          component={ProgressMapPage}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
