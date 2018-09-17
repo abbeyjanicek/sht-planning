@@ -25,6 +25,21 @@ const Nav = () => (
             Add a Hike
           </Link>
         </li>
+        <li>
+          <Link to="/add-campsite">
+            Add a Campsite
+          </Link>
+        </li>
+        <li>
+          <Link to="/campsite-main">
+            Campsite Review Main
+          </Link>
+        </li>
+        <li>
+          <Link to="/campsite-details">
+            Campsite Review Details
+          </Link>
+        </li>
       </ul>
     </div>
   </div>

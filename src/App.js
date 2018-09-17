@@ -13,6 +13,9 @@ import UserPage from './components/UserPage/UserPage.js';
 import HikeHistoryPage from './components/HikeHistory/HikeHistory.js';
 import ProgressMapPage from './components/ProgressMapPage/ProgressMapPage.js'
 import AddHikePage from './components/AddHikePage/AddHikePage.js'
+import AddCampsitePage from './components/AddCampsitePage/AddCampsitePage.js'
+import CampsiteMainPage from './components/CampsiteMainPage/CampsiteMainPage.js'
+import CampsiteDetailsPage from './components/CampsiteDetailsPage/CampsiteDetailsPage.js'
 
 import './styles/main.css';
 
@@ -45,6 +48,18 @@ const App = () => (
         <Route
           path="/add-hike"
           component={AddHikePage}
+        />
+        <Route
+          path="/add-campsite"
+          component={AddCampsitePage}
+        />
+        <Route
+          path="/campsite-main"
+          component={CampsiteMainPage}
+        />
+        <Route
+          path="/campsite-details"
+          component={CampsiteDetailsPage}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
