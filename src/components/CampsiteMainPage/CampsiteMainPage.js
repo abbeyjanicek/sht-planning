@@ -9,6 +9,13 @@ const mapStateToProps = state => ({
 
 class CampsiteMainPage extends Component {
 
+
+  componentDidUpdate() {
+    if (!this.props.user.isLoading && this.props.user.userName === null) {
+      this.props.history.push('home');
+    }
+  }
+  
     render() {
         let content = null;
     
