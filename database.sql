@@ -94,3 +94,22 @@ ALTER TABLE "trip_photos" ADD CONSTRAINT "trip_photos_fk1" FOREIGN KEY ("user_id
 ALTER TABLE "campsite_pics" ADD CONSTRAINT "campsite_pics_fk0" FOREIGN KEY ("user_id") REFERENCES "user"("id");
 ALTER TABLE "campsite_pics" ADD CONSTRAINT "campsite_pics_fk1" FOREIGN KEY ("campsite_id") REFERENCES "campsite"("id");
 
+INSERT into "campsite" ("site_name", "mile_marker", "latitude", "longitude")
+VALUES ('White Pine', 66, 46.9309, -92.0669);
+
+INSERT into "campsite_review" ("user_id", "campsite_id", "review", "rating")
+VALUES (1, 1, 'Great!', 5);
+
+INSERT into "trailhead" ("trailhead_name", "mile_marker")
+VALUES ('Martin Road', 60);
+
+INSERT into "trailhead" ("trailhead_name", "mile_marker")
+VALUES ('Normanna Road', 74);
+
+INSERT into "trip" ("user_id", "date_start", "date_end", "mile_start", "mile_end", "completed", "trailhead_start_id", "trailhead_end_id", "comments")
+VALUES (1, '2018-09-18', '2018-09-19', 60, 74, false, 1, 2, 'Excited!' );
+
+INSERT into "trip_campsite" ("date", "campsite_id", "trip_id")
+VALUES ('2018-09-18', 1, 2);
+
+

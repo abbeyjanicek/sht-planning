@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
-// import { triggerLogout } from '../../redux/actions/loginActions';
 
 
 const mapStateToProps = state => ({
@@ -22,10 +21,6 @@ class UserPage extends Component {
     }
   }
 
-  // logout = () => {
-  //   this.props.dispatch(triggerLogout());
-  // }
-
   render() {
     let content = null;
 
@@ -37,7 +32,15 @@ class UserPage extends Component {
           >
             Welcome, {this.props.user.userName}!
           </h1>
-          <div>
+          </div>
+      );
+    }
+
+    return (
+      <div>
+        <Nav />
+        {content}
+        <div>
             <p>Upcoming Hikes</p>
           </div>
           <div>
@@ -48,20 +51,7 @@ class UserPage extends Component {
           </div>
           <button>Add a Hike</button>
           <button>Review a Campsite</button>
-          {/* <button
-            onClick={this.logout}
-          >
-            Log Out
-          </button> */}
         </div>
-      );
-    }
-
-    return (
-      <div>
-        <Nav />
-        {content}
-      </div>
     );
   }
 }
