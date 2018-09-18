@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 // import AddHikeButton from './AddHikeButton/AddHikeButton.js';
 // import CompletedHikes from './CompletedHikes/CompletedHikes.js';
-// import MapClick from './MapClick/MapClick.js';
+import MapClick from './MapClick/MapClick.js';
 // import ReviewCampsite from './ReviewCampsite/ReviewCampsite.js';
 // import UpcomingHikes from './UpcomingHikes/UpcomingHikes.js'
 
@@ -54,7 +54,7 @@ class UserPage extends Component {
             <p>Completed Hikes</p>
           </div>
           <div>
-            {/* <MapClick /> */}
+            <MapClick history={this.props.history} />
             <p>Click on the map to see your progress!</p>
           </div>
           <div>
