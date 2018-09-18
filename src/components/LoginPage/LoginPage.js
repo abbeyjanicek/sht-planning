@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import SHTSummary from './SHTSummary/SHTSummary.js'
 
 
 const mapStateToProps = state => ({
@@ -54,7 +55,7 @@ class LoginPage extends Component {
           className="alert"
           role="alert"
         >
-          { this.props.login.message }
+          {this.props.login.message}
         </h2>
       );
     }
@@ -64,7 +65,10 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-        { this.renderAlert() }
+        <div>
+          <SHTSummary />
+        </div>
+        {this.renderAlert()}
         <form onSubmit={this.login}>
           <h1>Login</h1>
           <div>
@@ -96,6 +100,9 @@ class LoginPage extends Component {
               value="Log In"
             />
             <Link to="/register">Register</Link>
+          </div>
+          <div>
+            <Link to="/campsite-main">Guest User</Link>
           </div>
         </form>
       </div>
