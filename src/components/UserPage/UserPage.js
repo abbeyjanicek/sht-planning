@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Nav from '../../components/Nav/Nav';
-// import AddHikeButton from './AddHikeButton/AddHikeButton.js';
+import AddHikeButton from './AddHikeButton/AddHikeButton.js';
 // import CompletedHikes from './CompletedHikes/CompletedHikes.js';
 import MapClick from './MapClick/MapClick.js';
-// import ReviewCampsite from './ReviewCampsite/ReviewCampsite.js';
+import ReviewCampsite from './ReviewCampsite/ReviewCampsite.js';
 // import UpcomingHikes from './UpcomingHikes/UpcomingHikes.js'
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
@@ -58,12 +58,10 @@ class UserPage extends Component {
             <p>Click on the map to see your progress!</p>
           </div>
           <div>
-            {/* <AddHikeButton /> */}
-          <button>Add a Hike</button>
+            <AddHikeButton history={this.props.history} />
           </div>
           <div>
-            {/* <ReviewCampsite /> */}
-          <button>Review a Campsite</button>
+            <ReviewCampsite history={this.props.history} />
           </div>
         </div>
     );

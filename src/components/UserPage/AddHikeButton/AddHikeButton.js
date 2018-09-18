@@ -1,12 +1,29 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
+
+const mapStateToProps = reduxStore => ({
+    reduxStore
+});
+
 
 class AddHikeButton extends Component {
+
+
+    handleAddHike = (event) => {
+        console.log('in handleAddHike');
+        event.preventDefault();
+
+        this.props.history.push('/add-hike')
+
+    }
     render() {
         return (
-            <p>hello</p>
+            <div>
+                <button onClick={this.handleAddHike}>Add a Hike</button>
+                 
+            </div>
         );
     }
 }
 
-export default AddHikeButton;
+export default connect(mapStateToProps)(AddHikeButton);
