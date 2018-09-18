@@ -68,7 +68,6 @@ const App = () => (
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
-
       </Switch>
     </Router>
   </div>
