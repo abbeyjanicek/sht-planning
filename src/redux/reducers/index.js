@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
 import user from './userReducer';
 import login from './loginReducer';
-import inputHike from './inputHikeReducer';
+import upcomingHike from './upcomingHikeReducer';
+import completedHike from './completedHikeReducer';
 
 const store = combineReducers({
   user,
   login,
-  inputHike,
+  upcomingHike,
+  completedHike,
 });
 
 export default store;

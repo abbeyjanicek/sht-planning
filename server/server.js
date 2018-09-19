@@ -27,6 +27,8 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/hike', hikesRouter);
 
+
+
 // Serve static files
 app.use(express.static('build'));
 
