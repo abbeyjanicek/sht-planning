@@ -16,7 +16,7 @@ CREATE TABLE "campsite" (
 
 
 
-CREATE TABLE "trip" (
+CREATE TABLE "hike" (
 	"id" serial primary key NOT NULL,
 	"user_id" integer NOT NULL,
 	"date_start" DATE NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE "campsite_review" (
 
 
 
-CREATE TABLE "trip_campsite" (
+CREATE TABLE "hike_campsite" (
 	"id" serial primary key NOT NULL,
 	"date" DATE NOT NULL,
 	"campsite_id" integer NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE "trailhead" (
 
 
 
-CREATE TABLE "trip_photos" (
+CREATE TABLE "hike_photos" (
 	"id" serial primary key NOT NULL,
 	"trip_id" integer NOT NULL,
 	"user_id" integer NOT NULL,
@@ -77,19 +77,19 @@ CREATE TABLE "campsite_pics" (
 
 
 
-ALTER TABLE "trip" ADD CONSTRAINT "trip_fk0" FOREIGN KEY ("user_id") REFERENCES "user"("id");
-ALTER TABLE "trip" ADD CONSTRAINT "trip_fk1" FOREIGN KEY ("trailhead_start_id") REFERENCES "trailhead"("id");
-ALTER TABLE "trip" ADD CONSTRAINT "trip_fk2" FOREIGN KEY ("trailhead_end_id") REFERENCES "trailhead"("id");
+ALTER TABLE "hike" ADD CONSTRAINT "hike_fk0" FOREIGN KEY ("user_id") REFERENCES "user"("id");
+ALTER TABLE "hike" ADD CONSTRAINT "hike_fk1" FOREIGN KEY ("trailhead_start_id") REFERENCES "trailhead"("id");
+ALTER TABLE "hike" ADD CONSTRAINT "hike_fk2" FOREIGN KEY ("trailhead_end_id") REFERENCES "trailhead"("id");
 
 ALTER TABLE "campsite_review" ADD CONSTRAINT "campsite_review_fk0" FOREIGN KEY ("user_id") REFERENCES "user"("id");
 ALTER TABLE "campsite_review" ADD CONSTRAINT "campsite_review_fk1" FOREIGN KEY ("campsite_id") REFERENCES "campsite"("id");
 
-ALTER TABLE "trip_campsite" ADD CONSTRAINT "trip_campsite_fk0" FOREIGN KEY ("campsite_id") REFERENCES "campsite"("id");
-ALTER TABLE "trip_campsite" ADD CONSTRAINT "trip_campsite_fk1" FOREIGN KEY ("trip_id") REFERENCES "trip"("id");
+ALTER TABLE "hike_campsite" ADD CONSTRAINT "hike_campsite_fk0" FOREIGN KEY ("campsite_id") REFERENCES "campsite"("id");
+ALTER TABLE "hike_campsite" ADD CONSTRAINT "hike_campsite_fk1" FOREIGN KEY ("hike_id") REFERENCES "hike"("id");
 
 
-ALTER TABLE "trip_photos" ADD CONSTRAINT "trip_photos_fk0" FOREIGN KEY ("trip_id") REFERENCES "trip"("id");
-ALTER TABLE "trip_photos" ADD CONSTRAINT "trip_photos_fk1" FOREIGN KEY ("user_id") REFERENCES "user"("id");
+ALTER TABLE "hike_photos" ADD CONSTRAINT "hike_photos_fk0" FOREIGN KEY ("hike_id") REFERENCES "hike"("id");
+ALTER TABLE "hike_photos" ADD CONSTRAINT "hike_photos_fk1" FOREIGN KEY ("user_id") REFERENCES "user"("id");
 
 ALTER TABLE "campsite_pics" ADD CONSTRAINT "campsite_pics_fk0" FOREIGN KEY ("user_id") REFERENCES "user"("id");
 ALTER TABLE "campsite_pics" ADD CONSTRAINT "campsite_pics_fk1" FOREIGN KEY ("campsite_id") REFERENCES "campsite"("id");
@@ -106,10 +106,10 @@ VALUES ('Martin Road', 60);
 INSERT into "trailhead" ("trailhead_name", "mile_marker")
 VALUES ('Normanna Road', 74);
 
-INSERT into "trip" ("user_id", "date_start", "date_end", "mile_start", "mile_end", "completed", "trailhead_start_id", "trailhead_end_id", "comments")
+INSERT into "hike" ("user_id", "date_start", "date_end", "mile_start", "mile_end", "completed", "trailhead_start_id", "trailhead_end_id", "comments")
 VALUES (1, '2018-09-18', '2018-09-19', 60, 74, false, 1, 2, 'Excited!' );
 
-INSERT into "trip_campsite" ("date", "campsite_id", "trip_id")
+INSERT into "hike_campsite" ("date", "campsite_id", "trip_id")
 VALUES ('2018-09-18', 1, 2);
 
 

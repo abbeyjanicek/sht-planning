@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-const mapStateToProps = reduxStore => ({
+const MapStateToProps = reduxStore => ({
     reduxStore
 });
 
@@ -26,4 +26,4 @@ class AddHikeButton extends Component {
     }
 }
 
-export default connect(mapStateToProps)(AddHikeButton);
+export default connect(MapStateToProps)(AddHikeButton);

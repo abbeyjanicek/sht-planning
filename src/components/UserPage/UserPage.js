@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 
 import Nav from '../../components/Nav/Nav';
 import AddHikeButton from './AddHikeButton/AddHikeButton.js';
-// import CompletedHikes from './CompletedHikes/CompletedHikes.js';
+// import CompletedHikes from '../CompletedHikes/CompletedHikes.js';
 import MapClick from './MapClick/MapClick.js';
 import ReviewCampsite from './ReviewCampsite/ReviewCampsite.js';
-// import UpcomingHikes from './UpcomingHikes/UpcomingHikes.js'
+import UpcomingHikesSummary from './UpcomingHikesSummary/UpcomingHikesSummary.js'
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
@@ -46,8 +46,8 @@ class UserPage extends Component {
         <Nav />
         {content}
         <div>
-          {/* <UpcomingHikes /> */}
             <p>Upcoming Hikes</p>
+            <UpcomingHikesSummary />
           </div>
           <div>
             {/* <CompletedHikes /> */}
