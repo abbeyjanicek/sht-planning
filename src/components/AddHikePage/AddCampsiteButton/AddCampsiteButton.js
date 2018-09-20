@@ -9,13 +9,22 @@ const MapStateToProps = state => ({
 
 class AddCampsiteButton extends Component {
 
+    handleAddCampsite = (event) => {
+        console.log('in handleAddCampsite');
+        event.preventDefault();
+
+        this.props.history.push('/add-campsite')
+
+    }
     render() {
         return (
             <div>
-                <button>Add Campsite</button>
+                <button onClick={this.handleAddCampsite}>Add Campsite</button>
+                 
             </div>
         );
     }
 }
+
 
 export default connect(MapStateToProps)(AddCampsiteButton);

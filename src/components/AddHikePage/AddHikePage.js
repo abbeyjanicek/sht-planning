@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import AddHikeForm from './AddHikeForm/AddHikeForm.js'
 
+
 import Nav from '../Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
@@ -31,7 +32,7 @@ class AddHikePage extends Component {
               <h1>
                 Add a Hike
               </h1>
-              < AddHikeForm />
+              < AddHikeForm history={this.props.history} />
             </div>
           );
         }

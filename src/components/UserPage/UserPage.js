@@ -7,6 +7,7 @@ import HikeHistorySummary from './HikeHistorySummary/HikeHistorySummary.js';
 import MapClick from './MapClick/MapClick.js';
 import ReviewCampsite from './ReviewCampsite/ReviewCampsite.js';
 import UpcomingHikesSummary from './UpcomingHikesSummary/UpcomingHikesSummary.js'
+import './UserPage.css'
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
@@ -45,7 +46,7 @@ class UserPage extends Component {
       <div>
         <Nav />
         {content}
-        <div>
+        <div className="userProfileContainer">
             <p>Upcoming Hikes</p>
             <UpcomingHikesSummary history={this.props.history}/>
           </div>
