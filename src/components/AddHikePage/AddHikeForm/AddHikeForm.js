@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
+import HikeDate from '../HikeDate/HikeDate.js'
 
 import AddCampsiteButton from '../AddCampsiteButton/AddCampsiteButton.js'
-
-// import HikeCalendar from './components/Calendar/Calendar.js';
 
 const MapStateToProps = state => ({
     user: state.user,
@@ -15,9 +14,8 @@ class AddHikeForm extends Component {
     render() {
         return (
             <form>
-                {/* <HikeCalendar /> */}
-                <input type="text" placeholder="start date" name="start_date" />
-                <input type="text" placeholder="end date" name="end_date" />
+                Start Date: <HikeDate />
+                End Date: <HikeDate />
                 <input type="text" placeholder="starting mile" name="start_mile" />
                 <input type="text" placeholder="ending mile" name="end_mile" />
                 <input type="text" placeholder="start trailhead" name="start_trailhead" />
