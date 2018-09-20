@@ -10,7 +10,7 @@ import Header from './components/Header/Header.js';
 import LoginPage from './components/LoginPage/LoginPage.js';
 import RegisterPage from './components/RegisterPage/RegisterPage.js';
 import UserPage from './components/UserPage/UserPage.js';
-import HikeHistoryPage from './components/HikeHistory/HikeHistory.js';
+import HikeHistoryPage from './components/HikeHistoryPage/HikeHistoryPage.js'
 import ProgressMapPage from './components/ProgressMapPage/ProgressMapPage.js'
 import AddHikePage from './components/AddHikePage/AddHikePage.js'
 import AddCampsitePage from './components/AddCampsitePage/AddCampsitePage.js'

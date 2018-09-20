@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 
-class CompletedHikes extends Component {
+class HikeHistoryPage extends Component {
     render() {
         return (
             <p>hello</p>
@@ -9,4 +9,4 @@ class CompletedHikes extends Component {
     }
 }
 
-export default CompletedHikes;
+export default HikeHistoryPage;
