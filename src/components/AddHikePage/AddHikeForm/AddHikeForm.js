@@ -15,6 +15,7 @@ import HikeCompleted from '../CompletedCheckbox/CompletedCheckbox.js'
 const MapStateToProps = state => ({
     user: state.user,
     hikeToAdd: state.hikeToAdd,
+    state
 });
 
 class AddHikeForm extends Component {
@@ -75,7 +76,7 @@ class AddHikeForm extends Component {
                         <Link to="/campsite-main">
                             CLICK HERE
                         </Link>
-                        to visit the campsite review page.
+                         to visit the campsite review page.
                         <AddCampsiteButton history={this.props.history} />
                         <CampsiteAddedTable />
                         <h4>Comments:</h4> <textarea rows="6" cols="50"></textarea>

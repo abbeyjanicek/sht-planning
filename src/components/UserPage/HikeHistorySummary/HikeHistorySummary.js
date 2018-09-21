@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 // import { USER_ACTIONS } from '../../redux/actions/userActions';
 
@@ -47,7 +48,6 @@ class HikeHistorySummary extends Component {
   handleClickCompletedHikes = (event) => {
     console.log('in handleClickCompletedHikes');
     event.preventDefault();
-
     this.props.history.push('/history')
 
   }
@@ -62,9 +62,9 @@ class HikeHistorySummary extends Component {
             {/* pulls items from the reducer via props */}
             {this.props.hike.map((hikeInfo, i) => {
               return (
-                <li key={i} value={hikeInfo.date_start} onClick={this.handleClickCompletedHikes}>
+                <Link to="/history"><li key={i} value={hikeInfo.date_start} onClick={this.handleClickCompletedHikes}>
                   <p>{moment(hikeInfo.date_start).format('MM-DD-YYYY')}</p>
-                </li>
+                </li></Link>
               )
             })}
           </ul>

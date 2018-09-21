@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+// import Axios from 'axios';
+
 import CampsiteDropdown from '../DropdownMenu/CampsiteDropdown.js'
 import HikeDate from './../HikeDate/HikeDate.js'
 import Nav from '../Nav/Nav';

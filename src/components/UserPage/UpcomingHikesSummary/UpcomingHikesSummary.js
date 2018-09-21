@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
+
 
 // import { USER_ACTIONS } from './../../redux/actions/userActions';
 
@@ -62,10 +64,11 @@ class UpcomingHikesSummary extends Component {
                         {/* pulls items from the reducer via props */}
                         {this.props.newHike.map((hikeData, i) => {
                             return (                        
-                            <li key={i} value={hikeData.date_start} onClick={this.handleClickUpcomingHike}>
+                                <Link to="/history"><li  key={i} value={hikeData.date_start} onClick={this.handleClickUpcomingHike}>
                                     <p>{moment(hikeData.date_start).format('MM-DD-YYYY')}</p>
                                     {/* {JSON.stringify(this.props.state.inputHike)} */}
-                                </li>
+                                     </li> </Link>
+                              
                             )
                         })}
                     </ul>
