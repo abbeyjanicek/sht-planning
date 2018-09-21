@@ -22,9 +22,9 @@ class ProgressMapPage extends Component {
         if (this.props.user.userName) {
           content = (
             <div>
-              <p>
+              <h2>
                 Progress Map
-              </p>
+              </h2>
               <img className="shtMap" src="images/SHT_hikemap.png" alt="SHT" />
             </div>
           );

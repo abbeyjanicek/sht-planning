@@ -32,30 +32,21 @@ class UserPage extends Component {
 
     if (this.props.user.userName) {
       content = (
+        // className="userProfileContainer"
         <div>
-          <h1
-            id="welcome"
-          >
+          <h2 id="welcome">
             Welcome, {this.props.user.userName}!
-          </h1>
-          </div>
-      );
-    }
-
-    return (
-      <div>
-        <Nav />
-        {content}
-        <div className="userProfileContainer">
-            <p>Upcoming Hikes</p>
+          </h2>
+          <div>
+            <h3>Upcoming Hikes</h3>
             <UpcomingHikesSummary history={this.props.history}/>
           </div>
           <div>
-            <p>Completed Hikes</p>
+            <h3>Completed Hikes</h3>
             <HikeHistorySummary history={this.props.history} />
           </div>
           <div>
-          <p>Click on the map to see your progress!</p>
+          <h3>Click on the map to see your progress!</h3>
             <MapClick history={this.props.history} />
           </div>
           <div>
@@ -64,6 +55,15 @@ class UserPage extends Component {
           <div>
             <ReviewCampsite history={this.props.history} />
           </div>
+        </div>
+          
+      );
+    }
+
+    return (
+      <div>
+        <Nav />
+        {content}
         </div>
     );
   }

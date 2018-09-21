@@ -4,7 +4,7 @@ import Axios from 'axios';
 import { Link } from 'react-router-dom';
 
 // import { USER_ACTIONS } from '../../redux/actions/userActions';
-import HikeDate from '../HikeDate/HikeDate.js'
+import HikeDate from '../../HikeDate/HikeDate.js'
 import AddCampsiteButton from '../AddCampsiteButton/AddCampsiteButton.js'
 import CampsiteAddedTable from '../CampsiteAddedTable/CampsiteAddedTable.js';
 import TrailheadDropdown from '../../DropdownMenu/TrailheadDropdown.js'
@@ -55,7 +55,6 @@ class AddHikeForm extends Component {
         if (this.props.user.userName) {
             content = (
                 <div>
-                    <h2>Add a New Hike</h2>
                     <form onSubmit={this.handleSubmit}>
                         <HikeCompleted />
                         <h4>Start Date:</h4>

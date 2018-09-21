@@ -29,9 +29,9 @@ class AddHikePage extends Component {
         if (this.props.user.userName) {
           content = (
             <div>
-              <h1>
+              <h2>
                 Add a Hike
-              </h1>
+              </h2>
               < AddHikeForm history={this.props.history} />
             </div>
           );
