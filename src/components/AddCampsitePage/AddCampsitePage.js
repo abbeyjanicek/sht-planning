@@ -44,7 +44,7 @@ class AddCampsitePage extends Component {
                 <HikeDate />
                 <input type="submit" value="Add Campsite" />
               </form>
-              <button>Cancel</button>
+              <button onClick={this.handleCancelButton}>Cancel</button>
               
             </div>
           );

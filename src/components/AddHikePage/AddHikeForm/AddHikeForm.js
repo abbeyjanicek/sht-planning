@@ -73,7 +73,7 @@ class AddHikeForm extends Component {
                         <TrailheadDropdown />
                         <h4>Campsites</h4>
                         <p>Not sure where to camp? </p>
-                        <Link to="/add-campsite">
+                        <Link to="/campsite-main">
                             CLICK HERE
                         </Link>
                         to visit the campsite review page.
