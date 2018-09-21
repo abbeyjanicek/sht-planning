@@ -24,7 +24,14 @@ class AddCampsitePage extends Component {
           content = (
             <div>
               <p>Add a Campsite</p>
+              <form onSubmit={this.handleSubmit}>
               <CampsiteDropdown />
+                        <h4>Starting Mile Marker:</h4>
+                        <input type="text" placeholder="starting mile" name="mile_start" />
+                        
+                        <input type="submit" value="Submit" />
+                    </form>
+              
             </div>
           );
         }

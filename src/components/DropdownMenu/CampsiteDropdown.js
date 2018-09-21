@@ -5,50 +5,25 @@ import './DropdownMenu.css';
 
 const MapStateToProps = state => ({
     user: state.user,
-  });
+});
 
 class CampsiteDropdown extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            showDropdown: false,
-        }
+    constructor(props) {
+        super(props);
+        this.state = { value: '' };
     }
 
-    showDropdown = (event) => {
-        event.preventDefault();
-
-        this.setState({ showDropdown: true }, () => {
-            document.addEventListener('click', this.closeDropdown);
-        });
-    }
-
-    closeDropdown = (event) => {
-        if (!this.dropdownMenu.contains(event.target)) {
-            this.setState({ showDropdown: false }, () => {
-                document.removeEventListener('click', this.closeDropdown);
-            });
-        }
+    handleChange = (event) => {
+        this.setState({ value: event.target.value });
     }
 
     render() {
         return (
             <div>
-                <button onClick={this.showDropdown}>Click Here for Options</button>
-                {
-                    this.state.showDropdown
-                        ? (
-                            <div className="dropdown" ref={(element) => { this.dropdownMenu = element; }}>
-                                <button> Bald Eagle </button>
-                                <button> White Pine </button>
-                                <button> Lone Tree </button>
-                            </div>
-                        )
-                        : (
-                            null
-                        )
-                }
+                <select value={this.state.value} onChange={this.handleChange}>
+                    <option value="1">Bald Eagle</option>
+                    <option value="2">White Pine</option>
+                </select>
             </div>
         );
     }

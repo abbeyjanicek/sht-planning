@@ -13,7 +13,7 @@ class HikeDate extends Component {
     constructor (props) {
         super(props)
         this.state = {
-          startDate: moment()
+          startDate: moment(),
         };
     
       }

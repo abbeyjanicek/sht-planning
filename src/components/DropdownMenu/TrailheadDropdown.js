@@ -5,51 +5,25 @@ import './DropdownMenu.css';
 
 const MapStateToProps = state => ({
     user: state.user,
-  });
+});
 
 class TrailheadDropdown extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            showDropdown: false,
-        }
+    constructor(props) {
+        super(props);
+        this.state = { value: '' };
     }
 
-    showDropdown = (event) => {
-        event.preventDefault();
-
-        this.setState({ showDropdown: true }, () => {
-            document.addEventListener('click', this.closeDropdown);
-        });
-    }
-
-    closeDropdown = (event) => {
-        event.preventDefault();
-        if (!this.dropdownMenu.contains(event.target)) {
-            this.setState({ showDropdown: false }, () => {
-                document.removeEventListener('click', this.closeDropdown);
-            });
-        }
+    handleChange = (event) => {
+        this.setState({ value: event.target.value });
     }
 
     render() {
         return (
             <div>
-                <button onClick={this.showDropdown}>Click Here for Options</button>
-                {
-                    this.state.showDropdown
-                        ? (
-                            <div className="dropdown" ref={(element) => { this.dropdownMenu = element; }}>
-                                <button> Wild Valley Road </button>
-                                <button> Jay Cooke State Park </button>
-                                <button> Grand Portage </button>
-                            </div>
-                        )
-                        : (
-                            null
-                        )
-                }
+                <select value={this.state.value} onChange={this.handleChange}>
+                    <option value="1">Wild Valley Road</option>
+                    <option value="2">Jay Cooke State Park</option>
+                </select>
             </div>
         );
     }
