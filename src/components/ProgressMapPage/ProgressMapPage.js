@@ -25,6 +25,7 @@ class ProgressMapPage extends Component {
               <p>
                 Progress Map
               </p>
+              <img className="shtMap" src="images/SHT_hikemap.png" alt="SHT" />
             </div>
           );
         }
