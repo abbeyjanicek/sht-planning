@@ -64,7 +64,7 @@ class UpcomingHikesSummary extends Component {
                         {/* pulls items from the reducer via props */}
                         {this.props.newHike.map((hikeData, i) => {
                             return (                        
-                                <Link to="/history"><li  key={i} value={hikeData.date_start} onClick={this.handleClickUpcomingHike}>
+                                <Link to="/history"><li key={i} value={hikeData.date_start} onClick={this.handleClickUpcomingHike}>
                                     <p>{moment(hikeData.date_start).format('MM-DD-YYYY')}</p>
                                     {/* {JSON.stringify(this.props.state.inputHike)} */}
                                      </li> </Link>

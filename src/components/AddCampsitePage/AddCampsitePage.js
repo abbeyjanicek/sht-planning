@@ -1,17 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import Axios from 'axios';
+import Axios from 'axios';
 
+// import { USER_ACTIONS } from '../../redux/actions/userActions';
 import CampsiteDropdown from '../DropdownMenu/CampsiteDropdown.js'
 import HikeDate from './../HikeDate/HikeDate.js'
 import Nav from '../Nav/Nav';
+import MileMarker from '../MileMarker/MileMarker.js';
+
 
 const mapStateToProps = state => ({
     user: state.user,
+    campsiteToAdd: state.campsiteToAdd,
+    state
   });
 
 class AddCampsitePage extends Component {
 
+  // componentDidMount() {
+  //   this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+  // }
 
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
@@ -19,17 +27,41 @@ class AddCampsitePage extends Component {
     }
   } 
 
+  handleDropdownChange = (event) => {
+    this.props.dispatch({
+      type: 'ADD_CAMPSITE_NAME',
+      payload: event.target.value
+    })
+  }
+
+  handleDateChange = (event) => {
+    this.props.dispatch({
+      type: 'ADD_CAMPSITE_DATE',
+      payload: event.target.value
+    })
+  }
+
   handleCancelButton = (event) => {
     event.preventDefault();
     console.log('in handleCancelButton');
     this.props.history.push('/add-hike')
-  
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log('in handleSubmit');
-    this.props.history.push('/add-hike')
+    console.log(this.props.campsiteToAdd);
+    Axios({
+      method: 'POST',
+      url: '/api/campsite',
+      data: this.props.campsiteToAdd,
+    }).then((response) => {
+      console.log('Back from POST: ', response.data);
+      alert('Campsite was added.')
+      this.props.history.push('/add-hike')
+    }).catch((error) => {
+      console.log(error);
+      alert('Unable to add campsite.')
+    }) 
 }
 
     render() {
@@ -40,14 +72,14 @@ class AddCampsitePage extends Component {
             <div>
               <h2>Add a Campsite</h2>
               <form onSubmit={this.handleSubmit}>
-                <CampsiteDropdown />
+              <h4>Campsites:</h4>
+                <CampsiteDropdown value={this.props.campsiteToAdd.campsite_id} name="campsite_name" onChange={this.handleDropdownChange}/>
                 <h4>Mile Marker:</h4>
-                <input type="text" placeholder="mile marker" name="mile_marker" />
-                <HikeDate />
+                <MileMarker />
+                <HikeDate value={this.props.campsiteToAdd.date} name="date" onChange={this.handleDateChange}/>
                 <input type="submit" value="Add Campsite" />
               </form>
               <button onClick={this.handleCancelButton}>Cancel</button>
-              
             </div>
           );
         }

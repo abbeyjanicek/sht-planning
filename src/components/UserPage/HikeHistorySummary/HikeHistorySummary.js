@@ -14,7 +14,6 @@ const MapStateToProps = state => ({
 });
 
 class HikeHistorySummary extends Component {
-
   componentDidMount() {
     // this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.getCompletedHikes();

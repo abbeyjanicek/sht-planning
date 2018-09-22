@@ -16,6 +16,13 @@ class ProgressMapPage extends Component {
     }
   }
 
+  handleGoBack = (event) => {
+    console.log('in handleGoBack');
+    event.preventDefault();
+
+    this.props.history.push('/user')
+  }
+
     render() {
         let content = null;
     
@@ -26,6 +33,7 @@ class ProgressMapPage extends Component {
                 Progress Map
               </h2>
               <img className="shtMap" src="images/SHT_hikemap.png" alt="SHT" />
+              <button onClick={this.handleGoBack}>Go Back</button>
             </div>
           );
         }

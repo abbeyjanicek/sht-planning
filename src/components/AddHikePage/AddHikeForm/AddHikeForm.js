@@ -36,7 +36,7 @@ class AddHikeForm extends Component {
         Axios({
             method: 'POST',
             url: '/api/hike',
-            data: this.props.hikeToAdd
+            data: this.props.hikeToAdd,
         }).then((response) => {
             console.log('Back from POST: ', response.data);
             const action = { type: 'ADD_HIKE' }
