@@ -4,18 +4,18 @@ import Axios from 'axios';
 
 import Nav from '../Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
-import HikeHistoryTable from './HikeHistoryTable/HikeHistoryTable.js'
+import UpcomingHikesTable from './UpcomingHikesTable/UpcomingHikesTable.js'
 
 const MapStateToProps = state => ({
   user: state.user,
-  hike: state.completedHike,
+  hike: state.upcomingHike,
   state,
 });
 
-class HikeHistoryPage extends Component {
+class UpcomingHikesPage extends Component {
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-    // this.getCompletedHikes();
+    // this.getUpcomingHikes();
   }
 
   componentDidUpdate() {
@@ -24,22 +24,22 @@ class HikeHistoryPage extends Component {
     }
   }
 
-  // getCompletedHikes = () => {
-  //   console.log('in getCompletedHikes');
+  // getUpcomingHikes = () => {
+  //   console.log('in getUpcomingHikes');
 
   //   Axios({
   //     method: 'GET',
-  //     url: '/api/hike/completed'
+  //     url: '/api/hike/upcoming'
   //   }).then((response) => {
   //     console.log('back from server with: ', response.data);
   //     const hikeInfo = response.data;
   //     this.props.dispatch({
   //       payload: hikeInfo,
-  //       type: 'DISPLAY_COMPLETED',
+  //       type: 'DISPLAY_UPCOMING',
   //     })
   //   }).catch((error) => {
   //     console.log('error: ', error);
-  //     alert('There was an error getting completed hikes.')
+  //     alert('There was an error getting upcoming hikes.')
   //   })
   // }
 
@@ -49,9 +49,9 @@ class HikeHistoryPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <h3>Completed Hikes</h3>
+          <h3>Upcoming Hikes</h3>
           <table>
-          <HikeHistoryTable />
+          <UpcomingHikesTable />
           </table>
         </div>
       );
@@ -66,4 +66,4 @@ class HikeHistoryPage extends Component {
   }
 }
 
-export default connect(MapStateToProps)(HikeHistoryPage);
+export default connect(MapStateToProps)(UpcomingHikesPage);

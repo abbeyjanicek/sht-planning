@@ -50,7 +50,7 @@ class UpcomingHikesSummary extends Component {
         console.log('in handleClickUpcomingHike');
         event.preventDefault();
 
-        this.props.history.push('/history')
+        this.props.history.push('/upcoming')
 
     }
 

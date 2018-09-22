@@ -8,14 +8,14 @@ import Axios from 'axios';
 
 const MapStateToProps = state => ({
     user: state.user,
-    hike: state.completedHike,
+    hike: state.upcomingHike,
     state,
 });
 
-class HikeHistoryTable extends Component {
+class UpcomingHikesTable extends Component {
     componentDidMount() {
         // this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-        this.getCompletedHikes();
+        this.getUpcomingHikes();
     }
 
     componentDidUpdate() {
@@ -24,17 +24,17 @@ class HikeHistoryTable extends Component {
         }
     }
 
-    getCompletedHikes = () => {
-        console.log('in getCompletedHikes');
+    getUpcomingHikes = () => {
+        console.log('in getUpcomingHikes');
         Axios({
             method: 'GET',
-            url: '/api/hike/completed'
+            url: '/api/hike/upcoming'
         }).then((response) => {
             console.log('back from server with: ', response.data);
             const hikeInfo  = response.data;
             this.props.dispatch({
                 payload: hikeInfo,
-                type: 'DISPLAY_COMPLETED',
+                type: 'DISPLAY_UPCOMING',
             })
         }).catch((error) => {
             console.log('error: ', error);
@@ -91,7 +91,7 @@ class HikeHistoryTable extends Component {
     }
 }
 
-export default connect(MapStateToProps)(HikeHistoryTable);
+export default connect(MapStateToProps)(UpcomingHikesTable);
 
 
 

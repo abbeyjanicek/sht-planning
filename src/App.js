@@ -11,6 +11,7 @@ import LoginPage from './components/LoginPage/LoginPage.js';
 import RegisterPage from './components/RegisterPage/RegisterPage.js';
 import UserPage from './components/UserPage/UserPage.js';
 import HikeHistoryPage from './components/HikeHistoryPage/HikeHistoryPage.js'
+import UpcomingHikesPage from './components/UpcomingHikesPage/UpcomingHikesPage.js'
 import ProgressMapPage from './components/ProgressMapPage/ProgressMapPage.js'
 import AddHikePage from './components/AddHikePage/AddHikePage.js'
 import AddCampsitePage from './components/AddCampsitePage/AddCampsitePage.js'
@@ -37,6 +38,10 @@ const App = () => (
         <Route
           path="/user"
           component={UserPage}
+        />
+        <Route
+          path="/upcoming"
+          component={UpcomingHikesPage}
         />
         <Route
           path="/history"
