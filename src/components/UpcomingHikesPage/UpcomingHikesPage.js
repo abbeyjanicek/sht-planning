@@ -24,24 +24,12 @@ class UpcomingHikesPage extends Component {
     }
   }
 
-  // getUpcomingHikes = () => {
-  //   console.log('in getUpcomingHikes');
+  handleGoBack = (event) => {
+    console.log('in handleGoBack');
+    event.preventDefault();
 
-  //   Axios({
-  //     method: 'GET',
-  //     url: '/api/hike/upcoming'
-  //   }).then((response) => {
-  //     console.log('back from server with: ', response.data);
-  //     const hikeInfo = response.data;
-  //     this.props.dispatch({
-  //       payload: hikeInfo,
-  //       type: 'DISPLAY_UPCOMING',
-  //     })
-  //   }).catch((error) => {
-  //     console.log('error: ', error);
-  //     alert('There was an error getting upcoming hikes.')
-  //   })
-  // }
+    this.props.history.push('/user')
+  }
 
   render() {
     let content = null;
@@ -53,6 +41,7 @@ class UpcomingHikesPage extends Component {
           <table>
           <UpcomingHikesTable />
           </table>
+          <button onClick={this.handleGoBack}>Go Back</button>
         </div>
       );
     }

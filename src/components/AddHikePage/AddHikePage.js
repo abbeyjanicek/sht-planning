@@ -23,6 +23,13 @@ class AddHikePage extends Component {
     }
   }
 
+  handleGoBack = (event) => {
+    console.log('in handleGoBack');
+    event.preventDefault();
+
+    this.props.history.push('/user')
+  }
+
     render() {
         let content = null;
     
@@ -33,6 +40,7 @@ class AddHikePage extends Component {
                 Add a Hike
               </h2>
               < AddHikeForm history={this.props.history} />
+              <button onClick={this.handleGoBack}>Go Back</button>
             </div>
           );
         }

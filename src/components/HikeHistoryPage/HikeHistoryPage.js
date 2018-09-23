@@ -24,24 +24,12 @@ class HikeHistoryPage extends Component {
     }
   }
 
-  // getCompletedHikes = () => {
-  //   console.log('in getCompletedHikes');
+  handleGoBack = (event) => {
+    console.log('in handleGoBack');
+    event.preventDefault();
 
-  //   Axios({
-  //     method: 'GET',
-  //     url: '/api/hike/completed'
-  //   }).then((response) => {
-  //     console.log('back from server with: ', response.data);
-  //     const hikeInfo = response.data;
-  //     this.props.dispatch({
-  //       payload: hikeInfo,
-  //       type: 'DISPLAY_COMPLETED',
-  //     })
-  //   }).catch((error) => {
-  //     console.log('error: ', error);
-  //     alert('There was an error getting completed hikes.')
-  //   })
-  // }
+    this.props.history.push('/user')
+  }
 
   render() {
     let content = null;
@@ -53,6 +41,7 @@ class HikeHistoryPage extends Component {
           <table>
           <HikeHistoryTable />
           </table>
+          <button onClick={this.handleGoBack}>Go Back</button>
         </div>
       );
     }
