@@ -6,6 +6,7 @@ import completedHike from './completedHikeReducer';
 import addHike from './addHikeReducer';
 import campsiteData from './campsiteDataReducer';
 import campsiteToAdd from './addCampsiteReducer';
+import reviewToAdd from './addReviewReducer';
 
 const store = combineReducers({
   user,
@@ -15,6 +16,7 @@ const store = combineReducers({
   addHike,
   campsiteData,
   campsiteToAdd,
+  reviewToAdd,
 });
 
 export default store;

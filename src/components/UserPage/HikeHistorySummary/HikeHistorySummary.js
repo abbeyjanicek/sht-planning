@@ -33,7 +33,7 @@ class HikeHistorySummary extends Component {
       url: '/api/hike/completed'
     }).then((response) => {
       console.log('back from server with: ', response.data);
-      const hikeInfo  = response.data;
+      const hikeInfo = response.data;
       this.props.dispatch({
         payload: hikeInfo,
         type: 'DISPLAY_COMPLETED',

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import moment from 'moment';
 
 import Axios from 'axios';
 
@@ -31,7 +31,7 @@ class HikeHistoryTable extends Component {
             url: '/api/hike/completed'
         }).then((response) => {
             console.log('back from server with: ', response.data);
-            const hikeInfo  = response.data;
+            const hikeInfo = response.data;
             this.props.dispatch({
                 payload: hikeInfo,
                 type: 'DISPLAY_COMPLETED',
@@ -65,14 +65,14 @@ class HikeHistoryTable extends Component {
                             {this.props.hike.map((hike, i) => {
                                 return (
                                     <tr key={i} >
-                                        <td>{this.props.hike.date_start}</td>
-                                        <td>{this.props.hike.date_end}</td>
-                                        <td>{this.props.hike.mile_start}</td>
-                                        <td>{this.props.hike.mile_end}</td>
-                                        <td>{this.props.hike.completed}</td>
-                                        <td>{this.props.hike.trailhead_start_id}</td>
-                                        <td>{this.props.hike.trailhead_end_id}</td>
-                                        <td>{this.props.hike.comments}</td>
+                                        <td>{moment(hike.date_start).format('MM-DD-YYYY')}</td>
+                                        <td>{moment(hike.date_end).format('MM-DD-YYYY')}</td>
+                                        <td>{hike.mile_start}</td>
+                                        <td>{hike.mile_end}</td>
+                                        <td>{hike.completed}</td>
+                                        <td>{hike.trailhead_start_id}</td>
+                                        <td>{hike.trailhead_end_id}</td>
+                                        <td>{hike.comments}</td>
                                     </tr>
                                 )
                             })

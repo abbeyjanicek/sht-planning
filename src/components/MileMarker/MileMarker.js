@@ -9,6 +9,7 @@ import Axios from 'axios';
 const MapStateToProps = state => ({
     user: state.user,
     mileMarker: state.campsiteData,
+
     state,
 });
 
@@ -57,17 +58,22 @@ class MileMarker extends Component {
             content = (
                 <div>
                     <table>
-                        {this.props.mileMarker.map((campsiteInfo, i) => {
-                            return (
-                                <tbody key={i} value={campsiteInfo._id}>
-                                    <tr >
-                                        <td>{campsiteInfo.mile_marker}</td>
+                        <thead>
+                            <tr>
+                                <th>Mile Marker</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.props.mileMarker.map((campsite, i) => {
+                                return (
+                                    <tr key={i} value={campsite._id}>
+                                        <td>{campsite.mile_marker}</td>
                                     </tr>
-                                </tbody>
+                                )
+                            }
                             )
-                        }
-                        )
-                        }
+                            }
+                        </tbody>
                     </table>
                     {/* onChange={this.handleChange}> */}
 

@@ -63,7 +63,7 @@ class CampsiteDropdown extends Component {
                     <select value={this.state.value} onChange={this.handleChange}>
                         {this.props.campsite.map((campsiteInfo, i) => {
                             return (
-                                <option key={i} value={campsiteInfo._id} name="site_name">{campsiteInfo.site_name}</option>
+                                <option key={i} value={campsiteInfo.id} name="site_name">{campsiteInfo.site_name}</option>
                             )
                         }
                         )
