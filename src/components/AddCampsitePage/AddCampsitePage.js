@@ -27,20 +27,6 @@ class AddCampsitePage extends Component {
     }
   } 
 
-  handleDropdownChange = (event) => {
-    this.props.dispatch({
-      type: 'ADD_CAMPSITE_NAME',
-      payload: event.target.value
-    })
-  }
-
-  handleDateChange = (event) => {
-    this.props.dispatch({
-      type: 'ADD_CAMPSITE_DATE',
-      payload: event.target.value
-    })
-  }
-
   handleCancelButton = (event) => {
     event.preventDefault();
     console.log('in handleCancelButton');
@@ -73,9 +59,9 @@ class AddCampsitePage extends Component {
               <h2>Add a Campsite</h2>
               <form onSubmit={this.handleSubmit}>
               <h4>Campsites:</h4>
-                <CampsiteDropdown value={this.props.campsite.campsite_id} name="campsite_name" onChange={this.handleDropdownChange}/>
+                <CampsiteDropdown value={this.props.campsite.campsite_id} name="campsite_name"/>
                 {/* <MileMarker /> */}
-                <HikeDate value={this.props.campsite.date} name="date" onChange={this.handleDateChange}/>
+                <HikeDate value={this.props.campsite.date} name="date" />
                 <input type="submit" value="Add Campsite" />
               </form>
               <button onClick={this.handleCancelButton}>Cancel</button>

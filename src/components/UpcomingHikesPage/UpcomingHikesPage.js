@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Axios from 'axios';
+
 
 import Nav from '../Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';

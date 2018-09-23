@@ -14,7 +14,7 @@ import HikeCompleted from '../CompletedCheckbox/CompletedCheckbox.js'
 
 const MapStateToProps = state => ({
     user: state.user,
-    hikeToAdd: state.hikeToAdd,
+    hike: state.hikeToAdd,
     state
 });
 
@@ -32,11 +32,11 @@ class AddHikeForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log(this.props.hikeToAdd);
+        console.log('in handleSubmit');
         Axios({
             method: 'POST',
             url: '/api/hike',
-            data: this.props.hikeToAdd,
+            data: this.props.hike,
         }).then((response) => {
             console.log('Back from POST: ', response.data);
             const action = { type: 'ADD_HIKE' }
@@ -67,16 +67,14 @@ class AddHikeForm extends Component {
                         {/* value={this.props.hikeToAdd.mile_start} */}
                         <h4>Ending Mile Marker:</h4>
                         <input type="text" placeholder="ending mile" name="end_mile" />
-                        <h4>Starting Trailhead: </h4>
-                        <TrailheadDropdown />
-                        <h4>Ending Trailhead: </h4>
-                        <TrailheadDropdown />
+                        <h4>Starting Trailhead: </h4><TrailheadDropdown />
+                        <h4>Ending Trailhead: </h4><TrailheadDropdown />
                         <h4>Campsites</h4>
                         <p>Not sure where to camp? </p>
                         <Link to="/campsite-main">
                             CLICK HERE
                         </Link>
-                         to visit the campsite review page.
+                        to visit the campsite review page.
                         <AddCampsiteButton history={this.props.history} />
                         <CampsiteAddedTable />
                         <h4>Comments:</h4> <textarea rows="6" cols="50"></textarea>
