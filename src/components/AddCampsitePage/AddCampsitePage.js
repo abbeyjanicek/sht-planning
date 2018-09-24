@@ -4,7 +4,7 @@ import Axios from 'axios';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import CampsiteDropdown from '../DropdownMenu/CampsiteDropdown.js'
-import HikeDate from './../HikeDate/HikeDate.js'
+import CampsiteDate from './../HikeDate/CampsiteDate.js'
 import Nav from '../Nav/Nav';
 // import MileMarker from '../MileMarker/MileMarker.js';
 
@@ -61,7 +61,7 @@ class AddCampsitePage extends Component {
               <h4>Campsites:</h4>
                 <CampsiteDropdown value={this.props.campsite.campsite_id} name="campsite_name"/>
                 {/* <MileMarker /> */}
-                <HikeDate value={this.props.campsite.date} name="date" />
+                <CampsiteDate value={this.props.campsite.date} name="date" />
                 <input type="submit" value="Add Campsite" />
               </form>
               <button onClick={this.handleCancelButton}>Cancel</button>

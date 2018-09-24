@@ -9,6 +9,8 @@ import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 const mapStateToProps = state => ({
     user: state.user,
+    hike: state.hikeToAdd,
+    state
   });
 
 class AddHikePage extends Component {

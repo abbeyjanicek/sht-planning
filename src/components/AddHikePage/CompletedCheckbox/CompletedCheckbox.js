@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import Axios from 'axios';
 
+// import { USER_ACTIONS } from '../../redux/actions/userActions';
+
 const MapStateToProps = state => ({
     user: state.user,
+    completed: state.completed,
+    state
 });
 
 
@@ -16,6 +20,17 @@ class HikeCompleted extends Component {
         }
     };
 
+    componentDidMount() {
+        // this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+       
+    }
+
+    componentDidUpdate() {
+        if (!this.props.user.isLoading && this.props.user.userName === null) {
+            this.props.history.push('home');
+        }
+    }
+
     handleCheckbox = (event) => {
         console.log('in handleCheckbox');
         event.preventDefault();
@@ -26,18 +41,23 @@ class HikeCompleted extends Component {
         this.setState({
             [name]: value
         });
+        this.props.dispatch({
+            type: 'ADD_COMPLETED',
+            payload: value,
+        })
     }
 
     render() {
         return (
-            <div>
-                <label>
-                    Completed?
+                <div>
+                    <label>
+                        Completed?
+                     </label>
                     <input name="completed" type="checkbox" checked={this.state.completed} onChange={this.handleCheckbox} />
-                </label>
-            </div>
-        );
-    }
+                </div>
+            );
+
+        } 
 }
 
 

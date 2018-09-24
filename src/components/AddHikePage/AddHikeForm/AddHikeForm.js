@@ -4,7 +4,7 @@ import Axios from 'axios';
 import { Link } from 'react-router-dom';
 
 // import { USER_ACTIONS } from '../../redux/actions/userActions';
-import HikeDate from '../../HikeDate/HikeDate.js'
+import HikeDate from '../../HikeDate/CampsiteDate.js'
 import AddCampsiteButton from '../AddCampsiteButton/AddCampsiteButton.js'
 import CampsiteAddedTable from '../CampsiteAddedTable/CampsiteAddedTable.js';
 import TrailheadDropdown from '../../DropdownMenu/TrailheadDropdown.js'
@@ -32,7 +32,7 @@ class AddHikeForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log('in handleSubmit');
+        console.log('in handleSubmit: ', this.props.hike);
         Axios({
             method: 'POST',
             url: '/api/hike',
@@ -57,7 +57,8 @@ class AddHikeForm extends Component {
             content = (
                 <div>
                     <form onSubmit={this.handleSubmit}>
-                        <HikeCompleted />
+                        <HikeCompleted  />
+                        {/* value={this.props.hike.completed} */}
                         <h4>Start Date:</h4>
                         <HikeDate />
                         <h4>End Date:</h4>
