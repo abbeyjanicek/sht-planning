@@ -31,6 +31,20 @@ class AddHikeForm extends Component {
         }
     }
 
+    handleMileStartChange = (event) => {
+        this.props.dispatch({
+            type: 'ADD_MILE_START',
+            payload: event.target.value
+        })
+    }
+
+    handleMileEndChange = (event) => {
+        this.props.dispatch({
+            type: 'ADD_MILE_END',
+            payload: event.target.value
+        })
+    }
+
     handleSubmit = (event) => {
         event.preventDefault();
         console.log('in handleSubmit: ', this.props.hike);
@@ -65,10 +79,9 @@ class AddHikeForm extends Component {
                         <h4>End Date:</h4>
                         <HikeEndDate />
                         <h4>Starting Mile Marker:</h4>
-                        <input type="text" placeholder="starting mile" name="mile_start" />
-                        {/* value={this.props.hikeToAdd.mile_start} */}
+                        <input type="text" placeholder="starting mile" name="mile_start" value={this.props.mile_start} onChange={this.handleMileStartChange} />
                         <h4>Ending Mile Marker:</h4>
-                        <input type="text" placeholder="ending mile" name="end_mile" />
+                        <input type="text" placeholder="ending mile" name="end_mile" value={this.props.mile_end} onChange={this.handleMileEndChange} />
                         <h4>Starting Trailhead: </h4><TrailheadDropdown />
                         <h4>Ending Trailhead: </h4><TrailheadDropdown />
                         <h4>Campsites</h4>
