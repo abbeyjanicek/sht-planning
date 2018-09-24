@@ -8,14 +8,16 @@ import HikeStartDate from '../../HikeDate/HikeStartDate.js'
 import HikeEndDate from '../../HikeDate/HikeEndDate.js'
 import AddCampsiteButton from '../AddCampsiteButton/AddCampsiteButton.js'
 import CampsiteAddedTable from '../CampsiteAddedTable/CampsiteAddedTable.js';
-import TrailheadDropdown from '../../DropdownMenu/TrailheadDropdown.js'
+import TrailheadStartDropdown from '../../DropdownMenu/TrailheadStartDropdown.js'
+import TrailheadEndDropdown from '../../DropdownMenu/TrailheadEndDropdown.js'
 import HikeCompleted from '../CompletedCheckbox/CompletedCheckbox.js'
-
 
 
 const MapStateToProps = state => ({
     user: state.user,
     hike: state.hikeToAdd,
+    trailheadStart: state.startTrailheadToAdd,
+    trailheadEnd: state.endTrailheadToAdd,
     state
 });
 
@@ -32,6 +34,7 @@ class AddHikeForm extends Component {
     }
 
     handleMileStartChange = (event) => {
+        console.log('in handleMileStartChange');
         this.props.dispatch({
             type: 'ADD_MILE_START',
             payload: event.target.value
@@ -39,6 +42,7 @@ class AddHikeForm extends Component {
     }
 
     handleMileEndChange = (event) => {
+        console.log('in handleMileEndChange');
         this.props.dispatch({
             type: 'ADD_MILE_END',
             payload: event.target.value
@@ -73,17 +77,14 @@ class AddHikeForm extends Component {
                 <div>
                     <form onSubmit={this.handleSubmit}>
                         <HikeCompleted  />
-                        {/* value={this.props.hike.completed} */}
-                        <h4>Start Date:</h4>
-                        <HikeStartDate />
-                        <h4>End Date:</h4>
-                        <HikeEndDate />
+                        <h4>Start Date:</h4><HikeStartDate />
+                        <h4>End Date:</h4><HikeEndDate />
                         <h4>Starting Mile Marker:</h4>
                         <input type="text" placeholder="starting mile" name="mile_start" value={this.props.mile_start} onChange={this.handleMileStartChange} />
                         <h4>Ending Mile Marker:</h4>
                         <input type="text" placeholder="ending mile" name="end_mile" value={this.props.mile_end} onChange={this.handleMileEndChange} />
-                        <h4>Starting Trailhead: </h4><TrailheadDropdown />
-                        <h4>Ending Trailhead: </h4><TrailheadDropdown />
+                        <h4>Starting Trailhead: </h4><TrailheadStartDropdown />
+                        <h4>Ending Trailhead: </h4><TrailheadEndDropdown />
                         <h4>Campsites</h4>
                         <p>Not sure where to camp? </p>
                         <Link to="/campsite-main">

@@ -8,11 +8,11 @@ import Axios from 'axios';
 
 const MapStateToProps = state => ({
     user: state.user,
-    campsite: state.campsiteData,
+    trailhead: state.trailheadData,
     state,
 });
 
-class CampsiteDropdown extends Component {
+class TrailheadDropdown extends Component {
     constructor(props) {
         super(props);
         this.state = { value: '' };
@@ -20,7 +20,7 @@ class CampsiteDropdown extends Component {
 
     componentDidMount() {
         // this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-        this.getCampsites();
+        this.getTrailheads();
     }
 
     componentDidUpdate() {
@@ -29,35 +29,35 @@ class CampsiteDropdown extends Component {
         }
     }
 
-    getCampsites = () => {
-        console.log('in getCampsites');
+    getTrailheads = () => {
+        console.log('in getTrailheads');
 
         Axios({
             method: 'GET',
-            url: '/api/campsite'
+            url: '/api/trailhead'
         }).then((response) => {
             console.log('back from server with: ', response.data);
-            const campsiteInfo = response.data;
+            const trailheadInfo = response.data;
             this.props.dispatch({
-                payload: campsiteInfo,
-                type: 'GET_CAMPSITE',
+                payload: trailheadInfo,
+                type: 'GET_TRAILHEAD',
             })
         }).catch((error) => {
             console.log('error: ', error);
-            alert('There was an error getting campsites.')
+            alert('There was an error getting trailheads.')
         })
     }
 
+
     handleChange = (event) => {
-        console.log('in handleChange');
+        console.log('in handleChange ');
         event.preventDefault();
         this.setState({ value: event.target.value });
         this.props.dispatch({
-            type: 'ADD_CAMPSITE_NAME',
+            type: 'ADD_START_TRAILHEAD_NAME',
             payload: event.target.value
         })
     }
-
 
     render() {
         let content = null;
@@ -66,9 +66,9 @@ class CampsiteDropdown extends Component {
             content = (
                 <div>
                     <select value={this.state.value} onChange={this.handleChange}>
-                        {this.props.campsite.map((campsiteInfo, i) => {
+                        {this.props.trailhead.map((trailheadInfo, i) => {
                             return (
-                                <option key={i} value={campsiteInfo.id} name="site_name">{campsiteInfo.site_name}</option>
+                                <option key={i} value={trailheadInfo.id} name="start_trailhead_name">{trailheadInfo.trailhead_name}</option>
                             )
                         }
                         )
@@ -78,7 +78,6 @@ class CampsiteDropdown extends Component {
             )
         }
         return (
-
             <div>
                 {content}
             </div>
@@ -86,4 +85,4 @@ class CampsiteDropdown extends Component {
     }
 }
 
-export default connect(MapStateToProps)(CampsiteDropdown);
+export default connect(MapStateToProps)(TrailheadDropdown);

@@ -11,9 +11,9 @@ const hikeToAdd = (state = [], action) => {
         return { ...state, mile_start: action.payload };
     } else if (action.type === 'ADD_MILE_END') {
         return { ...state, mile_end: action.payload };
-    } else if (action.type === 'ADD_TRAILHEAD_START') {
+    } else if (action.type === 'ADD_START_TRAILHEAD_NAME') {
         return { ...state, trailhead_start: action.payload };
-    } else if (action.type === 'ADD_TRAILHEAD_END') {
+    } else if (action.type === 'ADD_END_TRAILHEAD_NAME') {
         return { ...state, trailhead_end: action.payload };
     } else if (action.type === 'ADD_COMMENTS') {
         return { ...state, comments: action.payload };
