@@ -4,7 +4,8 @@ import Axios from 'axios';
 import { Link } from 'react-router-dom';
 
 // import { USER_ACTIONS } from '../../redux/actions/userActions';
-import HikeDate from '../../HikeDate/CampsiteDate.js'
+import HikeStartDate from '../../HikeDate/HikeStartDate.js'
+import HikeEndDate from '../../HikeDate/HikeEndDate.js'
 import AddCampsiteButton from '../AddCampsiteButton/AddCampsiteButton.js'
 import CampsiteAddedTable from '../CampsiteAddedTable/CampsiteAddedTable.js';
 import TrailheadDropdown from '../../DropdownMenu/TrailheadDropdown.js'
@@ -60,9 +61,9 @@ class AddHikeForm extends Component {
                         <HikeCompleted  />
                         {/* value={this.props.hike.completed} */}
                         <h4>Start Date:</h4>
-                        <HikeDate />
+                        <HikeStartDate />
                         <h4>End Date:</h4>
-                        <HikeDate />
+                        <HikeEndDate />
                         <h4>Starting Mile Marker:</h4>
                         <input type="text" placeholder="starting mile" name="mile_start" />
                         {/* value={this.props.hikeToAdd.mile_start} */}

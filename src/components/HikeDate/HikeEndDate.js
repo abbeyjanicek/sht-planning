@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-class HikeDate extends Component {
+class HikeEndDate extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -21,7 +21,7 @@ class HikeDate extends Component {
   handleChange = (date) => {
     this.setState({ startDate: date });
     this.props.dispatch({
-      type: 'ADD_CAMPSITE_DATE',
+      type: 'ADD_END_DATE',
       payload: date,
     })
   }
@@ -36,4 +36,4 @@ class HikeDate extends Component {
 }
 
 
-export default connect(mapStateToProps)(HikeDate);
+export default connect(mapStateToProps)(HikeEndDate);
