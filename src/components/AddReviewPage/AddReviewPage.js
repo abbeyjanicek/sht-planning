@@ -66,6 +66,8 @@ class AddReviewPage extends Component {
           <h4>Campsites:</h4>
             <CampsiteDropdown value={this.props.campsite.campsite_id} name="campsite_name" onChange={this.handleDropdownChange}/>
             {/* <MileMarker /> */}
+            Rating: <input type="text"></input>
+            <h4>Review:</h4> <textarea rows="6" cols="50"></textarea>
             <input type="submit" value="Add Review" />
           </form>
           <button onClick={this.handleCancelButton}>Cancel</button>

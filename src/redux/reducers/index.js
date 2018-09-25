@@ -8,8 +8,7 @@ import campsiteData from './campsiteDataReducer';
 import campsiteToAdd from './addCampsiteReducer';
 import reviewToAdd from './addReviewReducer';
 import trailheadData from './trailheadDataReducer';
-import startTrailheadToAdd from './addStartTrailheadReducer';
-import endTrailheadToAdd from './addEndTrailheadReducer';
+import trailheadToAdd from './addTrailheadReducer';
 
 const store = combineReducers({
   user,
@@ -21,8 +20,7 @@ const store = combineReducers({
   campsiteToAdd,
   reviewToAdd,
   trailheadData,
-  startTrailheadToAdd,
-  endTrailheadToAdd,
+  trailheadToAdd,
 });
 
 export default store;

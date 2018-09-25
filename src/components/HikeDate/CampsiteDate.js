@@ -20,10 +20,6 @@ class CampsiteDate extends Component {
 
   handleChange = (date) => {
     this.setState({ startDate: date });
-    this.props.dispatch({
-      type: 'ADD_CAMPSITE',
-      payload: {date: date},
-    })
   }
 
 

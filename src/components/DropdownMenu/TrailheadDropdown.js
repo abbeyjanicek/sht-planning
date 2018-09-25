@@ -53,10 +53,6 @@ class TrailheadDropdown extends Component {
         console.log('in handleChange ');
         event.preventDefault();
         this.setState({ value: event.target.value });
-        this.props.dispatch({
-            type: 'ADD_START_TRAILHEAD_NAME',
-            payload: event.target.value
-        })
     }
 
     render() {
@@ -68,7 +64,7 @@ class TrailheadDropdown extends Component {
                     <select value={this.state.value} onChange={this.handleChange}>
                         {this.props.trailhead.map((trailheadInfo, i) => {
                             return (
-                                <option key={i} value={trailheadInfo.id} name="start_trailhead_name">{trailheadInfo.trailhead_name}</option>
+                                <option key={i} value={trailheadInfo.id} name="trailhead_name">{trailheadInfo.trailhead_name}</option>
                             )
                         }
                         )

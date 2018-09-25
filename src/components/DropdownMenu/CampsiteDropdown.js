@@ -52,10 +52,6 @@ class CampsiteDropdown extends Component {
         console.log('in handleChange');
         event.preventDefault();
         this.setState({ value: event.target.value });
-        this.props.dispatch({
-            type: 'ADD_CAMPSITE',
-            payload: {campsite_id: event.target.value}
-        })
     }
 
 

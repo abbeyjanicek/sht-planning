@@ -14,7 +14,6 @@ import HikeHistoryPage from './components/HikeHistoryPage/HikeHistoryPage.js'
 import UpcomingHikesPage from './components/UpcomingHikesPage/UpcomingHikesPage.js'
 import ProgressMapPage from './components/ProgressMapPage/ProgressMapPage.js'
 import AddHikePage from './components/AddHikePage/AddHikePage.js'
-import AddCampsitePage from './components/AddCampsitePage/AddCampsitePage.js'
 import CampsiteMainPage from './components/CampsiteMainPage/CampsiteMainPage.js'
 import CampsiteDetailsPage from './components/CampsiteDetailsPage/CampsiteDetailsPage.js'
 import AddReviewPage from './components/AddReviewPage/AddReviewPage.js'
@@ -54,10 +53,6 @@ const App = () => (
         <Route
           path="/add-hike"
           component={AddHikePage}
-        />
-        <Route
-          path="/add-campsite"
-          component={AddCampsitePage}
         />
         <Route
           path="/campsite-main"
