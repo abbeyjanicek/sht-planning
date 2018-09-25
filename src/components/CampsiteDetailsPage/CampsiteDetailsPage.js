@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Axios from 'axios';
 
 import Nav from '../Nav/Nav';
 
 const mapStateToProps = state => ({
     user: state.user,
+    campsite: state.campsiteData,
   });
 
 class CampsiteDetailsPage extends Component {
@@ -16,15 +18,63 @@ class CampsiteDetailsPage extends Component {
     }
   }
 
+  handleGoBack = (event) => {
+    event.preventDefault();
+    console.log('in handleGoBack');
+    this.props.history.push('/campsite-main')
+  }
+
+  getCampsiteReview = () => {
+    console.log('in getCampsiteReview');
+    Axios({
+        method: 'GET',
+        url: '/api/campsite/review'
+    }).then((response) => {
+        console.log('back from server with: ', response.data);
+        const campsiteInfo = response.data;
+        this.props.dispatch({
+            payload: campsiteInfo,
+            type: 'DISPLAY_CAMPSITE_REVIEW',
+        })
+    }).catch((error) => {
+        console.log('error: ', error);
+        alert('There was an error getting campsite review.')
+    })
+}
+
     render() {
         let content = null;
     
         if (this.props.user.userName) {
           content = (
             <div>
-              <p>
-                Campsite Review Details
-              </p>
+              <p>Campsite Review Details</p>
+              <h1>Campsite Name</h1>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Mile Marker</th>
+                    <th>Rating</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.props.campsite.map((campsite, i) => {
+                    return (
+                      <tr key = {i} >
+                      <td>{campsite.latitude}</td>
+                      <td>{campsite.longitude}</td>
+                      <td>{campsite.mile_marker}</td>
+                      <td>{campsite.rating}</td>
+                      </tr>
+                    )
+                  })}
+                  <tr></tr>
+                </tbody>
+              </table>
+              <h4>Review:</h4><textarea rows="6" cols="50"></textarea>
+              <button onClick={this.handleGoBack}>Go Back</button>
             </div>
           );
         }
