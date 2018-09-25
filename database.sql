@@ -45,7 +45,7 @@ CREATE TABLE "hike_campsite" (
 	"id" serial primary key NOT NULL,
 	"date" DATE NOT NULL,
 	"campsite_id" integer NOT NULL,
-	"trip_id" integer NOT NULL
+	"hike_id" integer NOT NULL
 );
 
 
@@ -60,7 +60,7 @@ CREATE TABLE "trailhead" (
 
 CREATE TABLE "hike_photos" (
 	"id" serial primary key NOT NULL,
-	"trip_id" integer NOT NULL,
+	"hike_id" integer NOT NULL,
 	"user_id" integer NOT NULL,
 	"pic_url" varchar(20000) NOT NULL
 );

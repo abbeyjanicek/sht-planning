@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+
 
 const reviewToAdd = (state = [], action) => {
     if (action.type === 'ADD_CAMPSITE_REVIEW_NAME') {
@@ -7,6 +7,4 @@ const reviewToAdd = (state = [], action) => {
     return state;
 }
 
-export default combineReducers({
-    reviewToAdd
-})
+export default reviewToAdd;

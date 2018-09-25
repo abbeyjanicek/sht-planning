@@ -5,7 +5,7 @@ import Axios from 'axios';
 import Nav from '../Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import CampsiteDropdown from '../DropdownMenu/CampsiteDropdown.js'
-import MileMarker from '../MileMarker/MileMarker.js';
+// import MileMarker from '../MileMarker/MileMarker.js';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -65,7 +65,7 @@ class AddReviewPage extends Component {
           <form onSubmit={this.handleSubmit}>
           <h4>Campsites:</h4>
             <CampsiteDropdown value={this.props.campsite.campsite_id} name="campsite_name" onChange={this.handleDropdownChange}/>
-            <MileMarker />
+            {/* <MileMarker /> */}
             <input type="submit" value="Add Review" />
           </form>
           <button onClick={this.handleCancelButton}>Cancel</button>

@@ -15,13 +15,14 @@ const hikeToAdd = (state = [], action) => {
         return { ...state, trailhead_start: action.payload };
     } else if (action.type === 'ADD_END_TRAILHEAD_NAME') {
         return { ...state, trailhead_end: action.payload };
+    } else if (action.type === 'DISPLAY_ADDED_CAMPSITE') {
+        return { ...state, comments: action.payload };
     } else if (action.type === 'ADD_COMMENTS') {
         return { ...state, comments: action.payload };
     }
+        return state;
+    }
 
-    return state;
-}
-
-export default combineReducers({
-    hikeToAdd
-})
+    export default combineReducers({
+        hikeToAdd
+    })

@@ -1,14 +1,14 @@
-import { combineReducers } from 'redux';
+// const defaultCampsite = [ 
+//     {campsite_id: '',
+//         date: '',
+//     }
+// ]
 
 const campsiteToAdd = (state = [], action) => {
-    if (action.type === 'ADD_CAMPSITE_NAME') {
-        return {...state, campsite_id: action.payload};
-    } else if (action.type === 'ADD_CAMPSITE_DATE') {
-        return {...state, date: action.payload};
+    if (action.type === 'ADD_CAMPSITE') {
+        return [...state, {campsite_id: action.payload.campsite_id, date: action.payload.date}];
     }
     return state;
 }
 
-export default combineReducers({
-    campsiteToAdd
-})
+export default campsiteToAdd;

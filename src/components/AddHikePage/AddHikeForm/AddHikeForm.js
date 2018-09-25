@@ -88,9 +88,8 @@ class AddHikeForm extends Component {
                         <h4>Campsites</h4>
                         <p>Not sure where to camp? </p>
                         <Link to="/campsite-main">
-                            CLICK HERE
-                        </Link>
-                        to visit the campsite review page.
+                            Click here
+                        </Link> to visit the campsite review page.
                         <AddCampsiteButton history={this.props.history} />
                         <CampsiteAddedTable />
                         <h4>Comments:</h4> <textarea rows="6" cols="50"></textarea>
