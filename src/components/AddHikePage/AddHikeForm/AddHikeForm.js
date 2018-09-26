@@ -9,13 +9,13 @@ import HikeEndDate from '../../HikeDate/HikeEndDate.js'
 import AddCampsiteModal from '../AddCampsiteModal/AddCampsiteModal.js'
 import CampsiteAddedTable from '../CampsiteAddedTable/CampsiteAddedTable.js';
 import TrailheadDropdown from '../../DropdownMenu/TrailheadDropdown.js'
-import HikeCompleted from '../CompletedCheckbox/CompletedCheckbox.js'
+// import HikeCompleted from '../CompletedCheckbox/CompletedCheckbox.js'
+import CheckboxLabels from '../CompletedCheckbox/Checkbox.js'
 
 
 const MapStateToProps = state => ({
     user: state.user,
     hike: state.hikeToAdd,
-    // trailhead: state.trailheadToAdd,
     state
 });
 
@@ -90,7 +90,7 @@ class AddHikeForm extends Component {
             content = (
                 <div>
                     <form onSubmit={this.handleSubmit}>
-                        <HikeCompleted  />
+                        <CheckboxLabels />
                         <h4>Start Date:</h4><HikeStartDate />
                         <h4>End Date:</h4><HikeEndDate />
                         <h4>Starting Mile Marker:</h4>

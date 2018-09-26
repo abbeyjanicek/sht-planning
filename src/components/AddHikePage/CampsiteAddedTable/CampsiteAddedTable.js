@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Axios from 'axios';
 
 
 
@@ -13,7 +14,7 @@ class CampsiteAddedTable extends Component {
 
     componentDidMount() {
         // this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-        // this.getAddedCampsites();
+        this.getAddedCampsites();
     }
 
     componentDidUpdate() {
@@ -22,23 +23,23 @@ class CampsiteAddedTable extends Component {
         }
     }
 
-    // getAddedCampsites = () => {
-    //     console.log('in getAddedCampsite');
-    //     Axios({
-    //         method: 'GET',
-    //         url: '/api/campsite/added'
-    //     }).then((response) => {
-    //         console.log('back from server with: ', response.data);
-    //         const campsiteInfo = response.data;
-    //         this.props.dispatch({
-    //             payload: campsiteInfo,
-    //             type: 'DISPLAY_ADDED_CAMPSITE',
-    //         })
-    //     }).catch((error) => {
-    //         console.log('error: ', error);
-    //         alert('There was an error getting added campsites.')
-    //     })
-    // }
+    getAddedCampsites = () => {
+        console.log('in getAddedCampsite');
+        Axios({
+            method: 'GET',
+            url: '/api/campsite/added'
+        }).then((response) => {
+            console.log('back from server with: ', response.data);
+            const campsiteInfo = response.data;
+            this.props.dispatch({
+                payload: campsiteInfo,
+                type: 'DISPLAY_ADDED_CAMPSITE',
+            })
+        }).catch((error) => {
+            console.log('error: ', error);
+            alert('There was an error getting added campsites.')
+        })
+    }
 
     render() {
         console.log(this.props.campsite);

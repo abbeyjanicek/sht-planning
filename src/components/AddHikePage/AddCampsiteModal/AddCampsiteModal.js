@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CampsiteDropdown from '../../DropdownMenu/CampsiteDropdown.js'
 import CampsiteDate from '../../HikeDate/CampsiteDate.js'
-import Axios from 'axios';
 
 
 const MapStateToProps = state => ({
@@ -27,11 +25,8 @@ class AddCampsiteModal extends Component {
         this.setState({ open: true });
     };
 
-    handleClose = () => {
-        this.setState({ open: false });
-    };
-
     // handleSubmit = (event) => {
+    //     this.setState({ open: false });
     //     event.preventDefault();
     //     console.log(this.props.campsite);
     //     Axios({
@@ -46,12 +41,24 @@ class AddCampsiteModal extends Component {
     //         console.log(error);
     //         alert('Unable to add campsite.')
     //     })
-    // }
+    // };
+
+    handleSubmit = (event) => {
+        this.setState({open: false});
+        event.preventDefault();
+        console.log(this.props.campsite);
+        const action = {type: 'ADD_CAMPSITE', payload: action.payload}
+        this.props.dispatch(action);        
+    }
+
+    handleClose = () => {
+        this.setState({ open: false });
+      };
 
     render() {
         return (
             <div>
-                <button onClick={this.handleClickOpen}>Add Campsite</button>
+                <button type="button" onClick={this.handleClickOpen}>Add Campsite</button>
                 <Dialog
                     open={this.state.open}
                     onClose={this.handleClose}
@@ -64,7 +71,7 @@ class AddCampsiteModal extends Component {
                         <CampsiteDate value={this.props.campsite.date} name="date" />
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={this.handleClose} color="primary">Add Campsite</Button>
+                        <Button onClick={this.handleSubmit} color="primary">Add Campsite</Button>
                         <Button onClick={this.handleClose} color="primary">Cancel</Button>
                     </DialogActions>
                 </Dialog>
