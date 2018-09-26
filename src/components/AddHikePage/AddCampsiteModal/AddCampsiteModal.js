@@ -5,8 +5,9 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import CampsiteDropdown from '../../DropdownMenu/CampsiteDropdown.js'
-import CampsiteDate from '../../HikeDate/CampsiteDate.js'
+import CampsiteDropdown from '../../DropdownMenu/CampsiteDropdown.js';
+import CampsiteDate from '../../HikeDate/CampsiteDate.js';
+import Axios from 'axios';
 
 
 const MapStateToProps = state => ({
@@ -18,12 +19,22 @@ const MapStateToProps = state => ({
 class AddCampsiteModal extends Component {
     constructor(props) {
         super(props);
-        this.state = { open: false }
+        this.state = {open: false}
     }
 
     handleClickOpen = () => {
         this.setState({ open: true });
     };
+
+    handleSubmit = (event) => {
+        console.log('in handleSubmit');
+        event.preventDefault();
+        this.setState({ value: event.target.value });
+        this.props.dispatch({
+            type: 'ADD_CAMPSITE',
+            payload: event.target.value,
+        })
+    }
 
     // handleSubmit = (event) => {
     //     this.setState({ open: false });
@@ -43,13 +54,7 @@ class AddCampsiteModal extends Component {
     //     })
     // };
 
-    handleSubmit = (event) => {
-        this.setState({open: false});
-        event.preventDefault();
-        console.log(this.props.campsite);
-        const action = {type: 'ADD_CAMPSITE', payload: action.payload}
-        this.props.dispatch(action);        
-    }
+   
 
     handleClose = () => {
         this.setState({ open: false });
@@ -72,7 +77,7 @@ class AddCampsiteModal extends Component {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleSubmit} color="primary">Add Campsite</Button>
-                        <Button onClick={this.handleClose} color="primary">Cancel</Button>
+                        <Button onClick={this.handleClose} color="primary">Close</Button>
                     </DialogActions>
                 </Dialog>
             </div>

@@ -53,6 +53,7 @@ class TrailheadDropdown extends Component {
         console.log('in handleChange ');
         event.preventDefault();
         this.setState({ value: event.target.value });
+        this.props.onDropdownChange(event);
     }
 
     render() {

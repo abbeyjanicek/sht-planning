@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
 
-// import { USER_ACTIONS } from '../../redux/actions/userActions';
+import { USER_ACTIONS } from '../../../redux/actions/userActions';
 import HikeStartDate from '../../HikeDate/HikeStartDate.js'
 import HikeEndDate from '../../HikeDate/HikeEndDate.js'
 import AddCampsiteModal from '../AddCampsiteModal/AddCampsiteModal.js'
@@ -15,13 +15,14 @@ import CheckboxLabels from '../CompletedCheckbox/Checkbox.js'
 
 const MapStateToProps = state => ({
     user: state.user,
-    hike: state.hikeToAdd,
+    hikeToAdd: state.hikeToAdd,
+    trailhead: state.trailheadData,
     state
 });
 
 class AddHikeForm extends Component {
     componentDidMount() {
-        // this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+        this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     }
 
     componentDidUpdate() {
@@ -63,17 +64,23 @@ class AddHikeForm extends Component {
         })
     }
 
+    handleCommentsChange = (event) => {
+        console.log('in handleCommentsChange');
+        this.props.dispatch({
+            type: 'ADD_COMMENTS',
+            payload: event.target.value
+        })
+    }
+
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log('in handleSubmit: ', this.props.hike);
+        console.log('in handleSubmit: ', this.props.hikeToAdd);
         Axios({
             method: 'POST',
             url: '/api/hike',
-            data: this.props.hike,
+            data: this.props.hikeToAdd,
         }).then((response) => {
             console.log('Back from POST: ', response.data);
-            const action = { type: 'ADD_HIKE' }
-            this.props.dispatch(action);
             alert('Hike was added.')
             this.props.history.push('/user');
         }).catch((error) => {
@@ -97,8 +104,8 @@ class AddHikeForm extends Component {
                         <input type="text" placeholder="starting mile" name="mile_start" value={this.props.mile_start} onChange={this.handleMileStartChange} />
                         <h4>Ending Mile Marker:</h4>
                         <input type="text" placeholder="ending mile" name="end_mile" value={this.props.mile_end} onChange={this.handleMileEndChange} />
-                        <h4>Starting Trailhead: </h4><TrailheadDropdown value={this.props.trailhead_start_id} onChange={this.handleStartTrailheadChange}/>
-                        <h4>Ending Trailhead: </h4><TrailheadDropdown value={this.props.trailhead_end_id} onChange={this.handleEndTrailheadChange}/>
+                        <h4>Starting Trailhead: </h4><TrailheadDropdown  onDropdownChange={this.handleStartTrailheadChange}/>
+                        <h4>Ending Trailhead: </h4><TrailheadDropdown onDropdownChange={this.handleEndTrailheadChange}/>
                         <h4>Campsites</h4>
                         <p>Not sure where to camp? </p>
                         <Link to="/campsite-main">
@@ -106,7 +113,7 @@ class AddHikeForm extends Component {
                         </Link> to visit the campsite review page.
                         <AddCampsiteModal history={this.props.history} onClick={this.handleClickOpen}/>
                         <CampsiteAddedTable />
-                        <h4>Comments:</h4> <textarea rows="6" cols="50"></textarea>
+                        <h4>Comments:</h4> <textarea rows="6" cols="50" name="comments" value={this.props.comments} onChange={this.handleCommentsChange}></textarea>
                         <input type="submit" value="Submit" />
                     </form>
                 </div>

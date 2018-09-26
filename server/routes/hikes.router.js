@@ -39,11 +39,11 @@ router.get('/completed', (req, res) => {
 /**
  * POST route template
  */
-router.post('/add-hike', (req, res) => {
+router.post('/', (req, res) => {
     console.log(req.body);
     if (req.isAuthenticated()) {
-        const query = `INSERT INTO "hike" ("date_start", "date_end", "mile_start", "mile_end", "completed", "trailhead_start_id", "trailhead_end_id", "comments") VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
-        pool.query(query, [req.body.hikeToAdd.date_start, req.body.hikeToAdd.date_end, req.body.hikeToAdd.mile_start, req.body.hikeToAdd.mile_end, req.body.hikeToAdd.completed, req.body.hikeToAdd.trailhead_start_id, req.body.hikeToAdd.trailhead_end_id, req.body.hikeToAdd.comments])
+        const query = `INSERT INTO "hike" ("date_start", "date_end", "mile_start", "mile_end", "completed", "trailhead_start_id", "trailhead_end_id", "comments", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`;
+        pool.query(query, [req.body.date_start, req.body.date_end, req.body.mile_start, req.body.mile_end, req.body.completed, req.body.trailhead_start_id, req.body.trailhead_end_id, req.body.comments, req.user.id])
             .then((results) => {
                 res.sendStatus(201);
             }).catch((error) => {

@@ -6,7 +6,7 @@
 
 const campsiteToAdd = (state = [], action) => {
     if (action.type === 'ADD_CAMPSITE') {
-        return [...state, {campsite_id: action.payload.campsite_id, date: action.payload.date}];
+        return [...state, {campsite_id: action.payload, date: action.payload}];
     }
     return state;
 }

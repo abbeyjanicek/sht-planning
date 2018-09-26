@@ -14,7 +14,6 @@ class CampsiteAddedTable extends Component {
 
     componentDidMount() {
         // this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-        this.getAddedCampsites();
     }
 
     componentDidUpdate() {

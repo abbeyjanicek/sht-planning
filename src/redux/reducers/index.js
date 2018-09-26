@@ -3,24 +3,25 @@ import user from './userReducer';
 import login from './loginReducer';
 import upcomingHike from './upcomingHikeReducer';
 import completedHike from './completedHikeReducer';
-import addHike from './addHikeReducer';
+import hikeToAdd from './hikeToAddReducer';
 import campsiteData from './campsiteDataReducer';
 import campsiteToAdd from './addCampsiteReducer';
 import reviewToAdd from './addReviewReducer';
 import trailheadData from './trailheadDataReducer';
-import trailheadToAdd from './addTrailheadReducer';
+// import addedHike from './addedHikeReducer'
+
 
 const store = combineReducers({
   user,
   login,
   upcomingHike,
   completedHike,
-  addHike,
+  hikeToAdd,
   campsiteData,
   campsiteToAdd,
   reviewToAdd,
   trailheadData,
-  trailheadToAdd,
+  // addedHike,
 });
 
 export default store;
