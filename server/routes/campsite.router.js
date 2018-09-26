@@ -42,7 +42,7 @@ router.post('/', (req, res) => {
     console.log(req.body);
 if (req.isAuthenticated()) {
     const query = `INSERT INTO "hike_campsite" ("date", "campsite_id") VALUES ($1, $2);`;
-    pool.query(query, [req.body.campsiteToAdd.date, req.body.campsiteToAdd.campsite_id])
+    pool.query(query, [req.body.date, req.body.campsite_id])
     .then((results) => {
         res.sendStatus(201);
     }).catch((error) => {

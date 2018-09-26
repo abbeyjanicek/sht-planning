@@ -62,9 +62,9 @@ class CheckboxLabels extends React.Component {
     }
 }
 
-CheckboxLabels.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
+// CheckboxLabels.propTypes = {
+//     classes: PropTypes.object.isRequired,
+// };
 
 export default connect(MapStateToProps)(CheckboxLabels);
 // export default withStyles(styles)(CheckboxLabels);

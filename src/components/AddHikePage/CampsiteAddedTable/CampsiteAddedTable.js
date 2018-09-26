@@ -7,7 +7,7 @@ import Axios from 'axios';
 const MapStateToProps = state => ({
     user: state.user,
     hike: state.hikeToAdd,
-    campsite: state.campsiteToAdd,
+    campsite: state.campsiteData,
 });
 
 class CampsiteAddedTable extends Component {

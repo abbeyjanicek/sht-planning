@@ -26,33 +26,31 @@ class AddCampsiteModal extends Component {
         this.setState({ open: true });
     };
 
-    handleSubmit = (event) => {
-        console.log('in handleSubmit');
-        event.preventDefault();
-        this.setState({ value: event.target.value });
+    handleCampsiteChange = (event) => {
+        console.log('in handleCampsiteChange');
         this.props.dispatch({
             type: 'ADD_CAMPSITE',
             payload: event.target.value,
         })
     }
 
-    // handleSubmit = (event) => {
-    //     this.setState({ open: false });
-    //     event.preventDefault();
-    //     console.log(this.props.campsite);
-    //     Axios({
-    //         method: 'POST',
-    //         url: '/api/campsite',
-    //         data: this.props.campsite,
-    //     }).then((response) => {
-    //         console.log('Back from POST: ', response.data);
-    //         alert('Campsite was added.')
-    //         this.props.history.push('/add-hike')
-    //     }).catch((error) => {
-    //         console.log(error);
-    //         alert('Unable to add campsite.')
-    //     })
-    // };
+    handleSubmit = (event) => {
+        this.setState({ open: false });
+        event.preventDefault();
+        console.log('in handleSubmit: ', this.props.campsite);
+        Axios({
+            method: 'POST',
+            url: '/api/campsite',
+            data: this.props.campsite,
+        }).then((response) => {
+            console.log('Back from POST: ', response.data);
+            alert('Campsite was added.')
+            this.props.history.push('/add-hike')
+        }).catch((error) => {
+            console.log(error);
+            alert('Unable to add campsite.')
+        })
+    };
 
    
 
@@ -71,9 +69,9 @@ class AddCampsiteModal extends Component {
 
                     <DialogTitle id="form-dialog-title">Add a Campsite</DialogTitle>
                     <DialogContent>
-                        <CampsiteDropdown value={this.props.campsite.campsite_id} name="campsite_name" />
+                        <CampsiteDropdown name="campsite_name" onDropdownChange={this.handleCampsiteChange}/>
                         {/* <MileMarker /> */}
-                        <CampsiteDate value={this.props.campsite.date} name="date" />
+                        <CampsiteDate name="date" />
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleSubmit} color="primary">Add Campsite</Button>

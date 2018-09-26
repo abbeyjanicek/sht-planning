@@ -32,7 +32,3 @@ const hikeToAdd = (state = defaultHike, action) => {
     }
 
     export default hikeToAdd;
-
-
-    // else if (action.type === 'DISPLAY_ADDED_CAMPSITE') {
-    //     return { ...state, campsite: action.payload };
