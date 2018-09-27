@@ -25,9 +25,25 @@ class AddReviewPage extends Component {
     }
   }
 
-  handleDropdownChange = (event) => {
+  handleCampsiteChange = (event) => {
     this.props.dispatch({
       type: 'ADD_CAMPSITE_REVIEW_NAME',
+      payload: event.target.value
+    })
+  }
+
+  handleRatingChange = (event) => {
+    console.log('in handleRatingChange');
+    this.props.dispatch({
+      type: 'ADD_CAMPSITE_RATING',
+      payload: event.target.value
+    })
+  }
+
+  handleReviewChange = (event) => {
+    console.log('in handleReviewChange');
+    this.props.dispatch({
+      type: 'ADD_CAMPSITE_REVIEW',
       payload: event.target.value
     })
   }
@@ -64,10 +80,10 @@ class AddReviewPage extends Component {
           <h2>Add a Review</h2>
           <form onSubmit={this.handleSubmit}>
           <h4>Campsites:</h4>
-            <CampsiteDropdown value={this.props.campsite.campsite_id} name="campsite_name" onChange={this.handleDropdownChange}/>
+            <CampsiteDropdown name="campsite_name" onDropdownChange={this.handleCampsiteChange}/>
             {/* <MileMarker /> */}
-            Rating: <input type="text"></input>
-            <h4>Review:</h4> <textarea rows="6" cols="50"></textarea>
+            <h4>Rating:</h4> <input type="text" value={this.props.rating} onChange={this.handleRatingChange}></input>
+            <h4>Review:</h4> <textarea rows="6" cols="50" onChange={this.handleReviewChange}></textarea>
             <input type="submit" value="Add Review" />
           </form>
           <button onClick={this.handleCancelButton}>Cancel</button>

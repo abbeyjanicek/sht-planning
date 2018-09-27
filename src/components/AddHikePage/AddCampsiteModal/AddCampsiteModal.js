@@ -76,7 +76,7 @@ class AddCampsiteModal extends Component {
         return (
             <div>
                 <button type="button" onClick={this.handleClickOpen}>Add Campsite</button>
-                <Dialog
+                <Dialog fullWidth="true"
                     open={this.state.open}
                     onClose={this.handleClose}
                     aria-labelledby="form-dialog-title">
