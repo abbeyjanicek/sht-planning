@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
+import moment from 'moment';
 
 
 
@@ -60,9 +61,9 @@ class CampsiteAddedTable extends Component {
                             {this.props.campsite.map((campsite, i) => {
                                 return (
                                     <tr key={i}>
-                                        <td>{campsite.date.toString()}</td>
+                                        <td>{moment(campsite.date.toString()).format('MM-DD-YYYY')}</td>
                                         <td>{campsite.site_name}</td>
-                                       
+                                        
                                     </tr>
                                 )
                             })}
