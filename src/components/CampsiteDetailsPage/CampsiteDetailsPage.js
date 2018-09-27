@@ -28,7 +28,7 @@ class CampsiteDetailsPage extends Component {
     console.log('in getCampsiteReview');
     Axios({
         method: 'GET',
-        url: '/api/campsite/review'
+        url: '/api/campsite/review-details'
     }).then((response) => {
         console.log('back from server with: ', response.data);
         const campsiteInfo = response.data;
@@ -49,7 +49,7 @@ class CampsiteDetailsPage extends Component {
           content = (
             <div>
               <p>Campsite Review Details</p>
-              <h1>Campsite Name</h1>
+              <h1>{this.props.campsite.site_name}</h1>
               <table>
                 <thead>
                   <tr>
@@ -70,7 +70,6 @@ class CampsiteDetailsPage extends Component {
                       </tr>
                     )
                   })}
-                  <tr></tr>
                 </tbody>
               </table>
               <h4>Review:</h4><textarea rows="6" cols="50"></textarea>

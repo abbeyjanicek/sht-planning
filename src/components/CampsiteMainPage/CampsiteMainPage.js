@@ -23,6 +23,7 @@ class CampsiteMainPage extends Component {
   handleCampsiteButton = (event) => {
     event.preventDefault();
     console.log('in handleCampsiteButton');
+    
     this.props.history.push('/campsite-details')
   }
 
@@ -46,10 +47,10 @@ class CampsiteMainPage extends Component {
         <div>
           <h3>Campsite Information</h3>
           <h4>Campsite Name:</h4>
-          <CampsiteDropdown />
-          <button onClick={this.handleCampsiteButton}>Go to Campsite</button>
+          <CampsiteDropdown name="campsite_name" onDropdownChange={this.handleCampsiteButton}/>
+          {/* <button onClick={this.handleCampsiteButton}>Go to Campsite</button> */}
           <button onClick={this.handleReviewButton}>Review a Campsite</button>
-          <button onClick={this.handleProfileButton}>Go to Profile</button>
+          <button onClick={this.handleProfileButton}>Go to User Profile</button>
         </div>
       );
     }

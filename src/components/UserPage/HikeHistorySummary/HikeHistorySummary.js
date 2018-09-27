@@ -57,27 +57,29 @@ class HikeHistorySummary extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <ul>
-            {/* pulls items from the reducer via props */}
-            {this.props.hike.map((hikeInfo, i) => {
-              return (
-                <Link to="/history"><li key={i} value={hikeInfo.date_start} onClick={this.handleClickCompletedHikes}>
-                  <p>{moment(hikeInfo.date_start).format('MM-DD-YYYY')}</p>
-                </li></Link>
-              )
-            })}
-          </ul>
+          <table>
+            <tbody>
+              {/* pulls items from the reducer via props */}
+              {this.props.hike.map((hikeInfo, i) => {
+                return (
+                  <Link to="/history"><tr key={i} value={hikeInfo.date_start} onClick={this.handleClickCompletedHikes}>
+                    <td>{moment(hikeInfo.date_start).format('MM-DD-YYYY')}</td>
+                  </tr></Link>
+                  )
+                })}
+            </tbody>
+          </table>
         </div>
-      );
-    }
+          );
+        }
 
-    return (
+        return (
       <div>
-        {content}
-      </div>
-    )
-  }
-}
+            {content}
+          </div>
+          )
+        }
+      }
 
 // this allows us to use <App /> in index.js
-export default connect(MapStateToProps)(HikeHistorySummary);
+                    export default connect(MapStateToProps)(HikeHistorySummary);

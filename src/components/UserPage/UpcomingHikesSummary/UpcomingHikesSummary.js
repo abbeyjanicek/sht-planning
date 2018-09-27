@@ -23,9 +23,9 @@ class UpcomingHikesSummary extends Component {
 
     componentDidUpdate() {
         if (!this.props.user.isLoading && this.props.user.userName === null) {
-          this.props.history.push('home');
+            this.props.history.push('home');
         }
-      }
+    }
 
     getUpcomingHikes = () => {
         console.log('in getUpcomingHikes');
@@ -46,8 +46,8 @@ class UpcomingHikesSummary extends Component {
         })
     }
 
-    handleClickUpcomingHike = (event) => {
-        console.log('in handleClickUpcomingHike');
+    handleClickUpcomingHikes = (event) => {
+        console.log('in handleClickUpcomingHikes');
         event.preventDefault();
 
         this.props.history.push('/upcoming')
@@ -60,18 +60,18 @@ class UpcomingHikesSummary extends Component {
         if (this.props.user.userName) {
             content = (
                 <div>
-                    <ul>
-                        {/* pulls items from the reducer via props */}
-                        {this.props.newHike.map((hikeData, i) => {
-                            return (                        
-                                <Link to="/history"><li key={i} value={hikeData.date_start} onClick={this.handleClickUpcomingHike}>
-                                    <p>{moment(hikeData.date_start).format('MM-DD-YYYY')}</p>
-                                    {/* {JSON.stringify(this.props.state.inputHike)} */}
-                                     </li> </Link>
-                              
-                            )
-                        })}
-                    </ul>
+                    <table>
+                        <tbody>
+                            {/* pulls items from the reducer via props */}
+                            {this.props.newHike.map((hikeData, i) => {
+                                return (
+                                    <Link to="/history"><tr key={i} value={hikeData.date_start} onClick={this.handleClickUpcomingHikes}>
+                                        <td>{moment(hikeData.date_start).format('MM-DD-YYYY')}</td>
+                                    </tr></Link>
+                                )
+                            })}
+                        </tbody>
+                    </table>
                 </div>
             );
         }
