@@ -12,14 +12,17 @@ import Axios from 'axios';
 
 const MapStateToProps = state => ({
     user: state.user,
-    campsite: state.campsiteToAdd,
+    campsite: state.addedCampsites.campsiteToAdd,
+    // addedCampsite: state.addedCampsites,
 });
-
 
 class AddCampsiteModal extends Component {
     constructor(props) {
         super(props);
-        this.state = {open: false}
+        this.state = {
+            open: false,
+            addedCamspite: []
+        }
     }
 
     handleClickOpen = () => {
@@ -32,31 +35,44 @@ class AddCampsiteModal extends Component {
             type: 'ADD_CAMPSITE',
             payload: event.target.value,
         })
+        this.props.dispatch({
+            type: 'ADD_CAMPSITE_NAME',
+            payload: event.target.options[event.target.selectedIndex].text,
+        })
     }
 
     handleSubmit = (event) => {
         this.setState({ open: false });
         event.preventDefault();
-        console.log('in handleSubmit: ', this.props.campsite);
-        Axios({
-            method: 'POST',
-            url: '/api/campsite',
-            data: this.props.campsite,
-        }).then((response) => {
-            console.log('Back from POST: ', response.data);
-            alert('Campsite was added.')
-            this.props.history.push('/add-hike')
-        }).catch((error) => {
-            console.log(error);
-            alert('Unable to add campsite.')
+        console.log('inhandleSubmit: ', this.props.campsite);
+        this.props.dispatch({
+            type: 'CAMPSITE_ADDED',
+            payload: this.props.campsite,
         })
-    };
+    }
+    // handleSubmit = (event) => {
+    //     this.setState({ open: false });
+    //     event.preventDefault();
+    //     console.log('in handleSubmit: ', this.props.campsite);
+    //     Axios({
+    //         method: 'POST',
+    //         url: '/api/campsite',
+    //         data: this.props.campsite,
+    //     }).then((response) => {
+    //         console.log('Back from POST: ', response.data);
+    //         alert('Campsite was added.')
+    //         this.props.history.push('/add-hike')
+    //     }).catch((error) => {
+    //         console.log(error);
+    //         alert('Unable to add campsite.')
+    //     })
+    // };
 
-   
+
 
     handleClose = () => {
         this.setState({ open: false });
-      };
+    };
 
     render() {
         return (
@@ -69,7 +85,7 @@ class AddCampsiteModal extends Component {
 
                     <DialogTitle id="form-dialog-title">Add a Campsite</DialogTitle>
                     <DialogContent>
-                        <CampsiteDropdown name="campsite_name" onDropdownChange={this.handleCampsiteChange}/>
+                        <CampsiteDropdown name="campsite_name" onDropdownChange={this.handleCampsiteChange} />
                         {/* <MileMarker /> */}
                         <CampsiteDate name="date" />
                     </DialogContent>

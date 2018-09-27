@@ -34,6 +34,12 @@ router.get('/campsite-details', (req, res) => {
     }
 });
 
+// router.get('/added-campsite', (req, res) => {
+//     if (req.isAuthenticated()) {
+//         const query = 
+//     }
+// })
+
 
 /**
  * POST route template

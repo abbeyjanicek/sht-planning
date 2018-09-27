@@ -7,7 +7,7 @@ import Axios from 'axios';
 const MapStateToProps = state => ({
     user: state.user,
     hike: state.hikeToAdd,
-    campsite: state.campsiteData,
+    campsite: state.addedCampsites.addedCampsites,
 });
 
 class CampsiteAddedTable extends Component {
@@ -53,16 +53,16 @@ class CampsiteAddedTable extends Component {
                             <tr>
                                 <th>Date</th>
                                 <th>Campsite Name</th>
-                                {/* <th>Mile Marker</th> */}
+                                
                             </tr>
                         </thead>
                         <tbody>
                             {this.props.campsite.map((campsite, i) => {
                                 return (
                                     <tr key={i}>
-                                        <td>{campsite.date}</td>
+                                        <td>{campsite.date.toString()}</td>
                                         <td>{campsite.site_name}</td>
-                                        {/* <td>0.3</td> */}
+                                       
                                     </tr>
                                 )
                             })}

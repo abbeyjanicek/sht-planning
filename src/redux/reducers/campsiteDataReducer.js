@@ -1,4 +1,4 @@
-// import { combineReducers } from 'redux';
+
 
 const campsiteData = (state = [], action) => {
     if (action.type === 'GET_CAMPSITE') {
