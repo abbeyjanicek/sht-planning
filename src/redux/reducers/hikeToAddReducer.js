@@ -6,8 +6,8 @@ const defaultHike = {
     date_end: '',
     mile_start: '',
     mile_end: '',
-    trailhead_start: '',
-    trailhead_end: '',
+    trailhead_start_id: '',
+    trailhead_end_id: '',
     comments: '',
 }
 const hikeToAdd = (state = defaultHike, action) => {

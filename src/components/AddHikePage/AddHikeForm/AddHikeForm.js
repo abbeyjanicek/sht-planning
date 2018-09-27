@@ -17,6 +17,7 @@ const MapStateToProps = state => ({
     user: state.user,
     hikeToAdd: state.hikeToAdd,
     trailhead: state.trailheadData,
+    addedCampsites: state.addedCampsites.addedCampsites,
     state
 });
 
@@ -78,7 +79,7 @@ class AddHikeForm extends Component {
         Axios({
             method: 'POST',
             url: '/api/hike',
-            data: this.props.hikeToAdd,
+            data: {hike: this.props.hikeToAdd, campsites: this.props.addedCampsites},
         }).then((response) => {
             console.log('Back from POST: ', response.data);
             alert('Hike was added.')

@@ -73,11 +73,11 @@ router.post('/', (req, res) => {
 
             const hikeId = hikeResult.rows[0].id;
 
-            // for(let campsite of req.body.campsites)
-        
-            // query = `INSERT INTO "hike_campsite" ("date", "campsite_id", "hike_id") VALUES ($1, $2, $3);`;
-            // await client.query(query, hike.date, campsite.campsite_id, hikeId)
-
+            for (let campsite of req.body.campsites) {
+                
+                query = `INSERT INTO "hike_campsite" ("date", "campsite_id", "hike_id") VALUES ($1, $2, $3);`;
+                await client.query(query, [campsite.date, campsite.campsite_id, hikeId])
+            };
 
             await client.query('COMMIT');
             res.sendStatus(201);

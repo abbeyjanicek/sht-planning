@@ -7,13 +7,12 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CampsiteDropdown from '../../DropdownMenu/CampsiteDropdown.js';
 import CampsiteDate from '../../HikeDate/CampsiteDate.js';
-import Axios from 'axios';
+
 
 
 const MapStateToProps = state => ({
     user: state.user,
     campsite: state.addedCampsites.campsiteToAdd,
-    // addedCampsite: state.addedCampsites,
 });
 
 class AddCampsiteModal extends Component {
@@ -21,7 +20,6 @@ class AddCampsiteModal extends Component {
         super(props);
         this.state = {
             open: false,
-            addedCamspite: []
         }
     }
 

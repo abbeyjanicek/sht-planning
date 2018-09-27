@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
 
 const defaultCampsite = {
-    campsite: '',
+    campsite_id: '',
     date: '',
+    site_name: '',
 }
 const campsiteToAdd = (state = defaultCampsite, action) => {
     if (action.type === 'ADD_CAMPSITE') {
