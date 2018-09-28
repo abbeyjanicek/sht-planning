@@ -7,6 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 
 
 import Axios from 'axios';
@@ -67,6 +68,8 @@ class UpcomingHikesTable extends Component {
                                     <TableCell>Starting Trailhead</TableCell>
                                     <TableCell>Ending Trailhead</TableCell>
                                     <TableCell>Comments</TableCell>
+                                    <TableCell>Edit</TableCell>
+                                    <TableCell>Delete</TableCell>
 
                                 </TableRow>
                             </TableHead>
@@ -82,6 +85,8 @@ class UpcomingHikesTable extends Component {
                                             <TableCell>{hike.trailhead_start_id}</TableCell>
                                             <TableCell>{hike.trailhead_end_id}</TableCell>
                                             <TableCell>{hike.comments}</TableCell>
+                                            <TableCell><Button variant="contained">Edit</Button></TableCell>
+                                            <TableCell><Button variant="contained">Delete</Button></TableCell>
                                         </TableRow>
                                     )
                                 })

@@ -19,7 +19,7 @@ class MapClick extends Component {
     render() {
         return (
             <div>
-                <img className="shtMap" src="images/SHT_hikemap.png" alt="SHT" onClick={this.handleMapClick} />
+                <img className="shtMap" src="images/superior-map-thumb.png" alt="SHT" onClick={this.handleMapClick} />
             </div>
         );
     }

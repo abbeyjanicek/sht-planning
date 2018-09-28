@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 import Nav from '../Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
@@ -77,7 +79,7 @@ class AddReviewPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <h2>Add a Review</h2>
+          <Typography variant="headline" component="h1" id="addReview">Add a Review</Typography>
           <form onSubmit={this.handleSubmit}>
           <h4>Campsites:</h4>
             <CampsiteDropdown name="campsite_name" onDropdownChange={this.handleCampsiteChange}/>
@@ -86,7 +88,7 @@ class AddReviewPage extends Component {
             <h4>Review:</h4> <textarea rows="6" cols="50" onChange={this.handleReviewChange}></textarea>
             <input type="submit" value="Add Review" />
           </form>
-          <button onClick={this.handleCancelButton}>Cancel</button>
+          <Button variant="contained" onClick={this.handleCancelButton}>Cancel</Button>
         </div>
       );
     }

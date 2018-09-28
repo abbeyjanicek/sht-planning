@@ -7,6 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 
 import Axios from 'axios';
 // import { USER_ACTIONS } from '../../redux/actions/userActions';
@@ -25,6 +26,7 @@ const styles = theme => ({
 const MapStateToProps = state => ({
     user: state.user,
     hike: state.completedHike,
+    trailhead: state.trailheadData,
     state,
 });
 
@@ -76,6 +78,7 @@ class HikeHistoryTable extends Component {
                                 <TableCell>Starting Trailhead</TableCell>
                                 <TableCell>Ending Trailhead</TableCell>
                                 <TableCell>Comments</TableCell>
+                                <TableCell>Edit</TableCell>
                                 <TableCell>Delete</TableCell>
                             </TableRow>
                         </TableHead>
@@ -91,7 +94,8 @@ class HikeHistoryTable extends Component {
                                         <TableCell>{hike.trailhead_start_id}</TableCell>
                                         <TableCell>{hike.trailhead_end_id}</TableCell>
                                         <TableCell>{hike.comments}</TableCell>
-                                        
+                                        <TableCell><Button variant="contained">Edit</Button></TableCell>
+                                        <TableCell><Button variant="contained">Delete</Button></TableCell>
                                     </TableRow>
                                 )
                             })

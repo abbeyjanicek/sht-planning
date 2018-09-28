@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 import AddHikeForm from './AddHikeForm/AddHikeForm.js'
 
@@ -38,11 +40,9 @@ class AddHikePage extends Component {
         if (this.props.user.userName) {
           content = (
             <div>
-              <h2>
-                Add a Hike
-              </h2>
+              <Typography variant="headline" component="h1" id="addHike">Add a Hike</Typography>
               < AddHikeForm history={this.props.history} />
-              <button onClick={this.handleGoBack}>Go Back</button>
+              <Button variant="contained" onClick={this.handleGoBack}>Go Back</Button>
             </div>
           );
         }

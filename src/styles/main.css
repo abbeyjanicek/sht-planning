@@ -3,12 +3,12 @@ body {
 }
 
 .instructions h1 {
-    font-size: 24px;
+    font-size: 48px;
     font-weight: 700;
 }
 
 .instructions {
-    background-color: #00acb0;
+    background-color: rgb(163, 228, 233);
     padding: 5px;
     color: #ece7e7;
 }
@@ -48,7 +48,7 @@ input[type="submit"] {
 }
 
 .navbar {
-  background-color: #00acb0;
+  background-color: rgb(163, 228, 233);
   width: 100%;
   border-radius: 0px;
 }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 import Nav from '../Nav/Nav';
 import CampsiteDropdown from '../DropdownMenu/CampsiteDropdown.js'
@@ -23,7 +25,6 @@ class CampsiteMainPage extends Component {
   handleCampsiteButton = (event) => {
     event.preventDefault();
     console.log('in handleCampsiteButton');
-    
     this.props.history.push('/campsite-details')
   }
 
@@ -45,12 +46,11 @@ class CampsiteMainPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <h3>Campsite Information</h3>
-          <h4>Campsite Name:</h4>
+          <Typography variant="headline" component="h1" id="addReview">Campsite Information</Typography>
+          <Typography variant="headline" component="h2" id="addReview">Campsite Name:</Typography>
           <CampsiteDropdown name="campsite_name" onDropdownChange={this.handleCampsiteButton}/>
-          {/* <button onClick={this.handleCampsiteButton}>Go to Campsite</button> */}
-          <button onClick={this.handleReviewButton}>Review a Campsite</button>
-          <button onClick={this.handleProfileButton}>Go to User Profile</button>
+          <Button variant="contained" onClick={this.handleReviewButton}>Review a Campsite</Button>
+          <Button variant="contained" onClick={this.handleProfileButton}>Go to User Profile</Button>
         </div>
       );
     }

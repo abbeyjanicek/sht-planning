@@ -101,9 +101,9 @@ class LoginPage extends Component {
             />
             <Link to="/register">Register</Link>
           </div>
-          <div>
+          {/* <div>
             <Link to="/campsite-main">Guest User</Link>
-          </div>
+          </div> */}
         </form>
       </div>
     );

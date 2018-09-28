@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
 
 import { triggerLogout } from '../../redux/actions/loginActions';
 
@@ -14,7 +15,7 @@ class LogOutButton extends Component {
     }
     render() {
         return (
-            <button onClick={this.logout}>Log Out</button>
+            <Button variant="contained" onClick={this.logout}>Log Out</Button>
         );
     }
 }

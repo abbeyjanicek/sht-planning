@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 import Nav from '../Nav/Nav';
 
 const mapStateToProps = state => ({
-    user: state.user,
-    campsite: state.campsiteData,
-  });
+  user: state.user,
+  campsite: state.campsiteData,
+});
 
 class CampsiteDetailsPage extends Component {
 
@@ -27,64 +35,67 @@ class CampsiteDetailsPage extends Component {
   getCampsiteReview = () => {
     console.log('in getCampsiteReview');
     Axios({
-        method: 'GET',
-        url: '/api/campsite/review-details'
+      method: 'GET',
+      url: '/api/campsite/review-details'
     }).then((response) => {
-        console.log('back from server with: ', response.data);
-        const campsiteInfo = response.data;
-        this.props.dispatch({
-            payload: campsiteInfo,
-            type: 'DISPLAY_CAMPSITE_REVIEW',
-        })
+      console.log('back from server with: ', response.data);
+      const campsiteInfo = response.data;
+      this.props.dispatch({
+        payload: campsiteInfo,
+        type: 'DISPLAY_CAMPSITE_REVIEW',
+      })
     }).catch((error) => {
-        console.log('error: ', error);
-        alert('There was an error getting campsite review.')
+      console.log('error: ', error);
+      alert('There was an error getting campsite review.')
     })
-}
+  }
 
-    render() {
-        let content = null;
-    
-        if (this.props.user.userName) {
-          content = (
-            <div>
-              <p>Campsite Review Details</p>
-              <h1>{this.props.campsite.site_name}</h1>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Latitude</th>
-                    <th>Longitude</th>
-                    <th>Mile Marker</th>
-                    <th>Rating</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {this.props.campsite.map((campsite, i) => {
-                    return (
-                      <tr key = {i} >
-                      <td>{campsite.latitude}</td>
-                      <td>{campsite.longitude}</td>
-                      <td>{campsite.mile_marker}</td>
-                      <td>{campsite.rating}</td>
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
-              <h4>Review:</h4><textarea rows="6" cols="50"></textarea>
-              <button onClick={this.handleGoBack}>Go Back</button>
-            </div>
-          );
-        }
-    
-        return (
-          <div>
-            <Nav />
-            { content }
-          </div>
-        );
-      }
+  render() {
+    let content = null;
+
+    if (this.props.user.userName) {
+      content = (
+        <div>
+          <Typography variant="headline" component="h1" id="campsiteReview">Campsite Review Details</Typography>
+          <h1>{this.props.campsite.site_name}</h1>
+          <Paper>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Latitude</TableCell>
+                  <TableCell>Longitude</TableCell>
+                  <TableCell>Mile Marker</TableCell>
+                  <TableCell>Rating</TableCell>
+                  <TableCell>Review</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {this.props.campsite.map((campsite, i) => {
+                  return (
+                    <TableRow key={i} >
+                      <TableCell>{campsite.latitude}</TableCell>
+                      <TableCell>{campsite.longitude}</TableCell>
+                      <TableCell>{campsite.mile_marker}</TableCell>
+                      <TableCell>{campsite.rating}</TableCell>
+                      <TableCell>{campsite.review}</TableCell>
+                    </TableRow>
+                  )
+                })}
+              </TableBody>
+            </Table>
+          </Paper>
+          <Button variant="contained" onClick={this.handleGoBack}>Go Back</Button>
+        </div>
+      );
     }
 
-    export default connect(mapStateToProps)(CampsiteDetailsPage);
+    return (
+      <div>
+        <Nav />
+        {content}
+      </div>
+    );
+  }
+}
+
+export default connect(mapStateToProps)(CampsiteDetailsPage);
