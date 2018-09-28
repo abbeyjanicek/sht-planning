@@ -21,7 +21,7 @@ const mapStateToProps = state => ({
 
 const styles = {
   card: {
-    minWidth: 275,
+    maxWidth: 275,
   },
   title: {
     marginBottom: 16,
@@ -48,11 +48,12 @@ class UserPage extends Component {
 
     if (this.props.user.userName) {
       content = (
-        // className="userProfileContainer"
-        <div>
+        
+        <div className="userProfileContainer">
           <Typography variant="headline" component="h1" id="welcome">
             Welcome, {this.props.user.userName}!
             </Typography>
+           
           <Card >
             <CardContent>
               <Typography variant="headline" component="h2">Upcoming Hikes</Typography>
@@ -61,19 +62,20 @@ class UserPage extends Component {
           </Card>
           <Card >
             <CardContent>
-              <Typography variant="headline" component="h2">Completed Hikes</Typography>
-              <HikeHistorySummary history={this.props.history} />
+              <Typography variant="headline" component="h2">Click on the map to see your progress!</Typography>
+              <MapClick history={this.props.history} />
             </CardContent>
           </Card>
           <Card >
             <CardContent>
-              <Typography variant="headline" component="h2">Click on the map to see your progress!</Typography>
-              <MapClick history={this.props.history} />
+              <Typography variant="headline" component="h2">Completed Hikes</Typography>
+              <HikeHistorySummary history={this.props.history} />
             </CardContent>
           </Card>
           <div>
             <AddHikeButton history={this.props.history} />
           </div>
+          
           <div>
             <ReviewCampsiteButton history={this.props.history} />
           </div>

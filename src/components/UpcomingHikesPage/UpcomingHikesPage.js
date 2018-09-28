@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
+import Table from '@material-ui/core/Table';
+import Typography from '@material-ui/core/Typography';
 
 
 import Nav from '../Nav/Nav';
@@ -37,11 +40,11 @@ class UpcomingHikesPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <h3>Upcoming Hikes</h3>
-          <table>
+          <Typography variant="headline" component="h1" id="completedHikes">Upcoming Hikes</Typography>
+          <Table>
           <UpcomingHikesTable />
-          </table>
-          <button onClick={this.handleGoBack}>Go Back</button>
+          </Table>
+          <Button variant="contained" onClick={this.handleGoBack}>Go Back</Button>
         </div>
       );
     }
