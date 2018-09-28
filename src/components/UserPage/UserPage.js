@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
 import Nav from '../../components/Nav/Nav';
 import AddHikeButton from './AddHikeButton/AddHikeButton.js';
 import HikeHistorySummary from './HikeHistorySummary/HikeHistorySummary.js';
 import MapClick from './MapClick/MapClick.js';
-import ReviewCampsite from './ReviewCampsite/ReviewCampsite.js';
+import ReviewCampsiteButton from './ReviewCampsite/ReviewCampsite.js';
 import UpcomingHikesSummary from './UpcomingHikesSummary/UpcomingHikesSummary.js'
 import './UserPage.css'
 
@@ -15,6 +18,19 @@ import { USER_ACTIONS } from '../../redux/actions/userActions';
 const mapStateToProps = state => ({
   user: state.user,
 });
+
+const styles = {
+  card: {
+    minWidth: 275,
+  },
+  title: {
+    marginBottom: 16,
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+}
 
 class UserPage extends Component {
   componentDidMount() {
@@ -34,29 +50,35 @@ class UserPage extends Component {
       content = (
         // className="userProfileContainer"
         <div>
-          <h2 id="welcome">
+          <Typography variant="headline" component="h1" id="welcome">
             Welcome, {this.props.user.userName}!
-          </h2>
-          <div>
-            <h3>Upcoming Hikes</h3>
-            <UpcomingHikesSummary history={this.props.history}/>
-          </div>
-          <div>
-            <h3>Completed Hikes</h3>
-            <HikeHistorySummary history={this.props.history} />
-          </div>
-          <div>
-          <h3>Click on the map to see your progress!</h3>
-            <MapClick history={this.props.history} />
-          </div>
+            </Typography>
+          <Card >
+            <CardContent>
+              <Typography variant="headline" component="h2">Upcoming Hikes</Typography>
+              <UpcomingHikesSummary history={this.props.history} />
+            </CardContent>
+          </Card>
+          <Card >
+            <CardContent>
+              <Typography variant="headline" component="h2">Completed Hikes</Typography>
+              <HikeHistorySummary history={this.props.history} />
+            </CardContent>
+          </Card>
+          <Card >
+            <CardContent>
+              <Typography variant="headline" component="h2">Click on the map to see your progress!</Typography>
+              <MapClick history={this.props.history} />
+            </CardContent>
+          </Card>
           <div>
             <AddHikeButton history={this.props.history} />
           </div>
           <div>
-            <ReviewCampsite history={this.props.history} />
+            <ReviewCampsiteButton history={this.props.history} />
           </div>
         </div>
-          
+
       );
     }
 
@@ -64,7 +86,7 @@ class UserPage extends Component {
       <div>
         <Nav />
         {content}
-        </div>
+      </div>
     );
   }
 }

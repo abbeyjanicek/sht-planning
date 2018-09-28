@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
 
 const mapStateToProps = reduxStore => ({
     reduxStore
 });
 
-class ReviewCampsite extends Component {
+class ReviewCampsiteButton extends Component {
     handleAddReview = (event) => {
         console.log('in handleAddReview');
         event.preventDefault();
@@ -16,10 +17,12 @@ class ReviewCampsite extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.handleAddReview}>Review a Campsite</button>
+                <Button variant="contained" onClick={this.handleAddReview}>
+                    Review a Campsite
+                </Button>
             </div>
         );
     }
 }
 
-export default connect(mapStateToProps)(ReviewCampsite);
+export default connect(mapStateToProps)(ReviewCampsiteButton);

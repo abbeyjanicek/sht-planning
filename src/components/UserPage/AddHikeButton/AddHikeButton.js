@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
 
 const MapStateToProps = reduxStore => ({
     reduxStore
@@ -19,8 +20,9 @@ class AddHikeButton extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.handleAddHike}>Add a Hike</button>
-                 
+                <Button variant="contained" onClick={this.handleAddHike}>
+                    Add a Hike
+                </Button>
             </div>
         );
     }
