@@ -12,17 +12,6 @@ import Button from '@material-ui/core/Button';
 import Axios from 'axios';
 // import { USER_ACTIONS } from '../../redux/actions/userActions';
 
-const styles = theme => ({
-    root: {
-      width: '100%',
-      marginTop: theme.spacing.unit * 3,
-      overflowX: 'auto',
-    },
-    table: {
-      minWidth: 700,
-    },
-  });
-
 const MapStateToProps = state => ({
     user: state.user,
     hike: state.completedHike,

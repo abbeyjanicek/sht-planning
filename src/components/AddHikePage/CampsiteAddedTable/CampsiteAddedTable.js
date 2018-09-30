@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
 import moment from 'moment';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 
 
@@ -49,27 +55,27 @@ class CampsiteAddedTable extends Component {
             content = (
 
                 <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Campsite Name</th>
-                                
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.props.campsite.map((campsite, i) => {
-                                return (
-                                    <tr key={i}>
-                                        <td>{moment(campsite.date.toString()).format('MM-DD-YYYY')}</td>
-                                        <td>{campsite.site_name}</td>
-                                        
-                                    </tr>
-                                )
-                            })}
-                        </tbody>
+                    <Paper>
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Date</TableCell>
+                                    <TableCell>Campsite Name</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {this.props.campsite.map((campsite, i) => {
+                                    return (
+                                        <TableRow key={i}>
+                                            <TableCell>{moment(campsite.date.toString()).format('MM-DD-YYYY')}</TableCell>
+                                            <TableCell>{campsite.site_name}</TableCell>
 
-                    </table>
+                                        </TableRow>
+                                    )
+                                })}
+                            </TableBody>
+                        </Table>
+                    </Paper>
                 </div>
             )
         }
