@@ -6,7 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CampsiteDropdown from '../../DropdownMenu/CampsiteDropdown.js';
-import CampsiteDate from '../../HikeDate/CampsiteDate.js';
+import DatePickers from '../../HikeDate/CampsiteCalendar.js';
 
 
 
@@ -85,7 +85,7 @@ class AddCampsiteModal extends Component {
                     <DialogContent>
                         <CampsiteDropdown name="campsite_name" onDropdownChange={this.handleCampsiteChange} />
                         {/* <MileMarker /> */}
-                        <CampsiteDate name="date" />
+                        <DatePickers name="date" />
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleSubmit} color="primary">Add Campsite</Button>

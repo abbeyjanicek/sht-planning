@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import PropTypes from 'prop-types';
 
 import './DropdownMenu.css';
 import Axios from 'axios';
@@ -19,19 +12,6 @@ const MapStateToProps = state => ({
     state,
 });
 
-const styles = theme => ({
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    formControl: {
-        margin: theme.spacing.unit,
-        minWidth: 120,
-    },
-    selectEmpty: {
-        marginTop: theme.spacing.unit * 2,
-    },
-});
 
 class TrailheadDropdown extends Component {
     constructor(props) {
@@ -69,44 +49,30 @@ class TrailheadDropdown extends Component {
         })
     }
 
-
     handleChange = (event) => {
-        console.log('in handleChange ');
+        console.log('in handleChange', event.target);
         event.preventDefault();
         this.setState({ value: event.target.value });
         this.props.onDropdownChange(event);
     }
 
-    
+
     render() {
         let content = null;
-        const { classes } = this.props;
-       
 
         if (this.props.user.userName) {
-            
+
             content = (
                 <div>
-                    <form autoComplete="off">
-                    {/* className={classes.root} */}
-                        <FormControl >
-                        {/* className={classes.formControl} */}
-                            <InputLabel htmlFor="trailhead-simple"></InputLabel>
-                            <Select value={this.state.value} onChange={this.handleChange}>
-                            <MenuItem value=""><em>Please Select</em></MenuItem>
-                                {this.props.trailhead.map((trailheadInfo, i) => {
-                                    return (
-                                        <div>
-                                        
-                                        <MenuItem key={i} value={trailheadInfo.id} name="trailhead_name">{trailheadInfo.trailhead_name}</MenuItem>
-                                        </div>
+                    <select value={this.state.value} onChange={this.handleChange}>
+                        {this.props.trailhead.map((trailheadInfo, i) => {
+                            return (
+                                    <option key={i} value={trailheadInfo.id} name="site_name">{trailheadInfo.trailhead_name}</option>
                             )
-                                }
-                                )
-                                }
-                            </Select>
-                        </FormControl>
-                    </form>
+                        }
+                        )
+                        }
+                    </select>
                 </div>
             )
         }
@@ -117,9 +83,6 @@ class TrailheadDropdown extends Component {
         )
     }
 }
-TrailheadDropdown.propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
 
 export default connect(MapStateToProps)(TrailheadDropdown);
 

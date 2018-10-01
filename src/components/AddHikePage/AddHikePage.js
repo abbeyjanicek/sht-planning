@@ -41,7 +41,7 @@ class AddHikePage extends Component {
           content = (
             <div>
               <Typography variant="headline" component="h1" id="addHike">Add a Hike</Typography>
-              < AddHikeForm history={this.props.history} />
+              <AddHikeForm history={this.props.history} />
               <Button variant="contained" onClick={this.handleGoBack}>Go Back</Button>
             </div>
           );
