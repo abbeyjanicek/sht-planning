@@ -1,42 +1,41 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import {DatePicker} from "material-ui-custom-datepicker";
 
-const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200,
-  },
+const mapStateToProps = state => ({
+  user: state.user,
 });
 
-function DatePickers(props) {
-  const { classes } = props;
-
-  return (
-    <form className={classes.container} noValidate>
-      <TextField
-        id="date"
-        label="Birthday"
-        type="date"
-        defaultValue="2017-05-24"
-        className={classes.textField}
-        InputLabelProps={{
-          shrink: true,
-        }}
+class myDatePicker extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: new Date()
+    }
+  }  
+  
+  handleChange = (event, value) => {
+    this.setState({value});
+    this.props.dispatch({
+      type: 'ADD_CAMPSITE_DATE',
+      payload: value,
+    })
+  }
+    
+  render(){
+    return (
+      <DatePicker
+        name="campDate"
+        value={this.state.value}
+        onChange={this.handleChange}  
+        floatingLabelText="Camping Date"
+        autoOk
+        cancelLabel="Back"
+        minDate={new Date(1900, 0, 1)}
+        maxDate={new Date(2100, 0, 1)}
       />
-    </form>
-  );
+    );
+  }
 }
 
-DatePickers.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(DatePickers);
+export default connect(mapStateToProps)(myDatePicker);

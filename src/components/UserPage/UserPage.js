@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Image from 'react-image-resizer';
 
 import Nav from '../../components/Nav/Nav';
 import AddHikeButton from './AddHikeButton/AddHikeButton.js';

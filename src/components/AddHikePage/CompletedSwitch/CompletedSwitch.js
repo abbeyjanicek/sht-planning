@@ -45,7 +45,7 @@ class CompletedSwitch extends React.Component {
             <div>
                 <Switch
                     checked={this.state.completed}
-                    onChange={this.handleChange('completed')}
+                    onChange={this.handleChange('true')}
                     value="true"
                     color="primary"
                 />

@@ -5,6 +5,11 @@ const Nav = () => (
   <div className="navbar">
     <div>
       <ul>
+      {/* <li>
+          <Link to="/tech">
+            Tech
+          </Link>
+        </li> */}
         <li>
           <Link to="/user">
             User Home

@@ -18,21 +18,21 @@ router.get('/', (req, res) => {
     }
 });
 
-// router.get('/campsite-details', (req, res) => {
-//     if (req.isAuthenticated()) {
-//         const query = `SELECT "campsite"."site_name", "campsite"."latitude", "campsite"."longitude", "campsite"."mile_marker", "campsite_review"."review", "campsite_review"."rating" 
-//         FROM "campsite_review" 
-//         JOIN "user" ON "user"."id" = "campsite_review"."user_id"
-//         JOIN "campsite" ON "campsite_review"."campsite_id" = "campsite"."id";`;
-//         pool.query(query).then((results) => {
-//             res.send(results.rows);
-//         }).catch((error) => {
-//             res.sendStatus(500);
-//         });
-//     } else {
-//         res.sendStatus(403);
-//     }
-// });
+router.get('/campsite-details', (req, res) => {
+    if (req.isAuthenticated()) {
+        const query = `SELECT "campsite"."site_name", "campsite"."latitude", "campsite"."longitude", "campsite"."mile_marker", "campsite_review"."review", "campsite_review"."rating" 
+        FROM "campsite_review" 
+        JOIN "user" ON "user"."id" = "campsite_review"."user_id"
+        JOIN "campsite" ON "campsite_review"."campsite_id" = "campsite"."id";`;
+        pool.query(query).then((results) => {
+            res.send(results.rows);
+        }).catch((error) => {
+            res.sendStatus(500);
+        });
+    } else {
+        res.sendStatus(403);
+    }
+});
 
 
 /**

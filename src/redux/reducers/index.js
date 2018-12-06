@@ -9,6 +9,8 @@ import campsiteToAdd from './addCampsiteReducer';
 import reviewToAdd from './addReviewReducer';
 import trailheadData from './trailheadDataReducer';
 import addedCampsites from './addCampsiteReducer';
+import campsiteDetails from './campsiteDetailsReducer';
+import selectedCampsite from './campsiteDetailsReducer';
 // import addedHike from './addedHikeReducer'
 
 
@@ -23,7 +25,8 @@ const store = combineReducers({
   reviewToAdd,
   trailheadData,
   addedCampsites,
-  // addedHike,
+  campsiteDetails,
+  selectedCampsite,
 });
 
 export default store;

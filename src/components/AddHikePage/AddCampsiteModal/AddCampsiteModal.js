@@ -6,7 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CampsiteDropdown from '../../DropdownMenu/CampsiteDropdown.js';
-import DatePickers from '../../HikeDate/CampsiteCalendar.js';
+import CampsiteDate from '../../HikeDate/CampsiteDate.js';
 
 
 
@@ -48,25 +48,6 @@ class AddCampsiteModal extends Component {
             payload: this.props.campsite,
         })
     }
-    // handleSubmit = (event) => {
-    //     this.setState({ open: false });
-    //     event.preventDefault();
-    //     console.log('in handleSubmit: ', this.props.campsite);
-    //     Axios({
-    //         method: 'POST',
-    //         url: '/api/campsite',
-    //         data: this.props.campsite,
-    //     }).then((response) => {
-    //         console.log('Back from POST: ', response.data);
-    //         alert('Campsite was added.')
-    //         this.props.history.push('/add-hike')
-    //     }).catch((error) => {
-    //         console.log(error);
-    //         alert('Unable to add campsite.')
-    //     })
-    // };
-
-
 
     handleClose = () => {
         this.setState({ open: false });
@@ -75,8 +56,8 @@ class AddCampsiteModal extends Component {
     render() {
         return (
             <div>
-                <button type="button" onClick={this.handleClickOpen}>Add Campsite</button>
-                <Dialog fullWidth="true"
+                <Button onClick={this.handleClickOpen}>Add Campsite</Button>
+                <Dialog fullWidth='true'
                     open={this.state.open}
                     onClose={this.handleClose}
                     aria-labelledby="form-dialog-title">
@@ -85,7 +66,7 @@ class AddCampsiteModal extends Component {
                     <DialogContent>
                         <CampsiteDropdown name="campsite_name" onDropdownChange={this.handleCampsiteChange} />
                         {/* <MileMarker /> */}
-                        <DatePickers name="date" />
+                        <CampsiteDate name="date" />
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleSubmit} color="primary">Add Campsite</Button>

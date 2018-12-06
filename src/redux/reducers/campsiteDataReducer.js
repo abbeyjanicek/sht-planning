@@ -5,8 +5,6 @@ const campsiteData = (state = [], action) => {
         return action.payload;
     } else if (action.type === 'DISPLAY_ADDED_CAMPSITE') {
         return {...state, campsite: action.payload};
-    } else if (action.type === 'DISPLAY_CAMPSITE_REVIEW') {
-        return {...state, review: action.payload};
     }
     return state;
 }

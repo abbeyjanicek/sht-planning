@@ -69,7 +69,6 @@ class CampsiteAddedTable extends Component {
                                         <TableRow key={i}>
                                             <TableCell>{moment(campsite.date.toString()).format('MM-DD-YYYY')}</TableCell>
                                             <TableCell>{campsite.site_name}</TableCell>
-
                                         </TableRow>
                                     )
                                 })}

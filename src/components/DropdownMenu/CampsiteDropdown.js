@@ -49,7 +49,7 @@ class CampsiteDropdown extends Component {
     }
 
     handleChange = (event) => {
-        console.log('in handleChange', event.target);
+        console.log('in handleChange', event.target.value);
         event.preventDefault();
         this.setState({value: event.target.value});
         this.props.onDropdownChange(event);

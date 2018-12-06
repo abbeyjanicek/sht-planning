@@ -79,9 +79,9 @@ class HikeHistoryTable extends Component {
                                         <TableCell>{moment(hike.date_end).format('MM-DD-YYYY')}</TableCell>
                                         <TableCell>{hike.mile_start}</TableCell>
                                         <TableCell>{hike.mile_end}</TableCell>
-                                        <TableCell>{hike.completed}</TableCell>
-                                        <TableCell>{hike.trailhead_start_id}</TableCell>
-                                        <TableCell>{hike.trailhead_end_id}</TableCell>
+                                        <TableCell>yes</TableCell>
+                                        <TableCell>{hike.trailhead_name}</TableCell>
+                                        <TableCell>{hike.trailhead_name}</TableCell>
                                         <TableCell>{hike.comments}</TableCell>
                                         <TableCell><Button variant="contained">Edit</Button></TableCell>
                                         <TableCell><Button variant="contained">Delete</Button></TableCell>

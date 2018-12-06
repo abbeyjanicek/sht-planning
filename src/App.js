@@ -17,6 +17,7 @@ import AddHikePage from './components/AddHikePage/AddHikePage.js'
 import CampsiteMainPage from './components/CampsiteMainPage/CampsiteMainPage.js'
 import CampsiteDetailsPage from './components/CampsiteDetailsPage/CampsiteDetailsPage.js'
 import AddReviewPage from './components/AddReviewPage/AddReviewPage.js'
+import TechUsed from './components/TechUsed.js'
 
 import './styles/main.css';
 
@@ -34,6 +35,10 @@ const App = () => (
           path="/register"
           component={RegisterPage}
         />
+        {/* <Route
+          path="/tech"
+          component={TechUsed}
+        /> */}
         <Route
           path="/user"
           component={UserPage}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
 import Typography from '@material-ui/core/Typography';
+// import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -9,10 +10,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-
 const mapStateToProps = state => ({
   user: state.user,
-  campsite: state.campsiteDetails,
+  campsite: state.campsiteReview,
 });
 
 class CampsiteDetailsPage extends Component {
@@ -24,29 +24,30 @@ class CampsiteDetailsPage extends Component {
     }
   }
 
-  handleGoBack = (event) => {
-    event.preventDefault();
-    console.log('in handleGoBack');
-    this.props.history.push('/campsite-main')
+  // handleGoBack = (event) => {
+  //   event.preventDefault();
+  //   console.log('in handleGoBack');
+  //   this.props.history.push('/campsite-main')
+  // }
+
+  getCampsiteReview = () => {
+    console.log('in getCampsiteReview');
+    Axios({
+      method: 'GET',
+      url: '/api/campsite/campsite-details'
+    }).then((response) => {
+      console.log('back from server with: ', response.data);
+      const campsiteInfo = response.data;
+      this.props.dispatch({
+        payload: campsiteInfo,
+        type: 'DISPLAY_CAMPSITE_REVIEW',
+      })
+    }).catch((error) => {
+      console.log('error: ', error);
+      alert('There was an error getting campsite review.')
+    })
   }
 
-  // getCampsiteReview = () => {
-  //   console.log('in getCampsiteReview');
-  //   Axios({
-  //     method: 'GET',
-  //     url: '/api/campsite/campsite-details'
-  //   }).then((response) => {
-  //     console.log('back from server with: ', response.data);
-  //     const campsiteInfo = response.data;
-  //     this.props.dispatch({
-  //       payload: campsiteInfo,
-  //       type: 'DISPLAY_CAMPSITE_REVIEW',
-  //     })
-  //   }).catch((error) => {
-  //     console.log('error: ', error);
-  //     alert('There was an error getting campsite review.')
-  //   })
-  // }
 
 
   render() {
@@ -56,7 +57,7 @@ class CampsiteDetailsPage extends Component {
       content = (
         <div>
           <Typography variant="headline" component="h1" id="campsiteReview">Campsite Review Details</Typography>
-          <Typography>{this.props.campsite.site_name}</Typography>
+          <Typography>Sugarloaf Pond</Typography>
           <Paper>
             <Table>
               <TableHead>
@@ -83,12 +84,14 @@ class CampsiteDetailsPage extends Component {
               </TableBody>
             </Table>
           </Paper>
+          {/* <Button variant="contained" onClick={this.handleGoBack}>Go Back</Button> */}
         </div>
       );
     }
 
     return (
       <div>
+        
         {content}
       </div>
     );
